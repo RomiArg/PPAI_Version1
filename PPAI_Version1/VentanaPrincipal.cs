@@ -17,7 +17,14 @@ namespace PPAI_Version1
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            CSV ventana = new CSV();
+            ventana.ShowDialog();
+        }
+
+        private void dgwLlamada_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
