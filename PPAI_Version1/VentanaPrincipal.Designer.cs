@@ -55,7 +55,6 @@
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dgwLlamada = new System.Windows.Forms.DataGridView();
-            this.splitter2 = new System.Windows.Forms.Splitter();
             this.LlamadaConEcuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +62,7 @@
             this.DescripcionEncuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pregunta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RespuestasCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitter2 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -284,15 +284,6 @@
             this.dgwLlamada.TabIndex = 1;
             this.dgwLlamada.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwLlamada_CellContentClick);
             // 
-            // splitter2
-            // 
-            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(708, 0);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(92, 276);
-            this.splitter2.TabIndex = 0;
-            this.splitter2.TabStop = false;
-            // 
             // LlamadaConEcuesta
             // 
             this.LlamadaConEcuesta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -351,6 +342,15 @@
             this.RespuestasCliente.HeaderText = "Respuestas seleccionadas del Cliente";
             this.RespuestasCliente.Name = "RespuestasCliente";
             // 
+            // splitter2
+            // 
+            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.splitter2.Location = new System.Drawing.Point(708, 0);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(92, 276);
+            this.splitter2.TabIndex = 0;
+            this.splitter2.TabStop = false;
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,6 +361,7 @@
             this.Name = "VentanaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Encuestas";
+            this.Load += new System.EventHandler(this.VentanaPrincipal_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

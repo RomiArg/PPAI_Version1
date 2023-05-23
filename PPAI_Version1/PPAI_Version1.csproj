@@ -52,6 +52,9 @@
     <Compile Include="CSV.Designer.cs">
       <DependentUpon>CSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Encuesta.cs" />
+    <Compile Include="Entidades\Pregunta.cs" />
+    <Compile Include="Entidades\RespuestaPosible.cs" />
     <Compile Include="VentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>

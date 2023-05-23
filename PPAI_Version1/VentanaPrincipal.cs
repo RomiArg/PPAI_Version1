@@ -26,6 +26,11 @@ namespace PPAI_Version1
 
         private void dgwLlamada_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
+
+        private void VentanaPrincipal_Load(object sender, EventArgs e)
+        {
 
         }
     }
