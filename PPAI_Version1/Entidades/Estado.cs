@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace PPAI_Version1.Entidades
 {
-    public class Pregunta
+    public class Estado
     {
-        public string pregunta { get; set; }
-        public RespuestaPosible respuesta = new RespuestaPosible();
-        public Pregunta() { }
+        public string nombre{ get; set; }
+
+        public Estado() { }
     }
 }
