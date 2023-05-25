@@ -8,8 +8,19 @@ namespace PPAI_Version1.Entidades
 {
     public class RespuestaDeCliente
     {
-        public DateTime fechaDeEncuesta { get; set; }
-        public RespuestaPosible respuestaSeleccionada = new RespuestaPosible();
-        public RespuestaDeCliente() { }
+        private DateTime fechaDeEncuesta;
+        private RespuestaPosible respuestaSeleccionada;
+
+        public RespuestaDeCliente(DateTime fechaDeEncuesta, RespuestaPosible respuestaSeleccionada)
+        {
+            this.fechaDeEncuesta = fechaDeEncuesta;
+            this.respuestaSeleccionada = respuestaSeleccionada;
+        }
+        
+        //public RespuestaPosible GetDescripcionRta()
+        public RespuestaPosible GetRespuestaSeleccionada() 
+        {
+            return respuestaSeleccionada;
+        }      
     }
 }

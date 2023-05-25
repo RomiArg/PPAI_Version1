@@ -61,12 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Analisis\GestorEncuesta.cs" />
-    <Compile Include="Analisis\PantallaEncuesta.cs" />
-    <Compile Include="CSV.cs">
+    <Compile Include="Controlador\GestorEncuesta.cs" />
+    <Compile Include="Interfaz\CSV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CSV.Designer.cs">
+    <Compile Include="Interfaz\CSV.Designer.cs">
       <DependentUpon>CSV.cs</DependentUpon>
     </Compile>
     <Compile Include="Entidades\CambioEstado.cs" />
@@ -77,18 +76,18 @@
     <Compile Include="Entidades\Llamada.cs" />
     <Compile Include="Entidades\Pregunta.cs" />
     <Compile Include="Entidades\RespuestaPosible.cs" />
-    <Compile Include="VentanaPrincipal.cs">
+    <Compile Include="Interfaz\VentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VentanaPrincipal.Designer.cs">
+    <Compile Include="Interfaz\VentanaPrincipal.Designer.cs">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CSV.resx">
+    <EmbeddedResource Include="Interfaz\CSV.resx">
       <DependentUpon>CSV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VentanaPrincipal.resx">
+    <EmbeddedResource Include="Interfaz\VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

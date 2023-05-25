@@ -8,9 +8,15 @@ namespace PPAI_Version1.Entidades
 {
     public class Cliente
     {
-        public string nombreCompleto { get; set; }
-        public int DNI { get; set;}
-        public int nroCelular { get; set; }
-        public Cliente() { }
+        private string nombreCompleto;
+        private int DNI;
+        private int nroCelular;
+
+        public Cliente(string nombreCompleto, int dNI, int nroCelular)
+        {
+            this.nombreCompleto = nombreCompleto;
+            DNI = dNI;
+            this.nroCelular = nroCelular;
+        }
     }
 }

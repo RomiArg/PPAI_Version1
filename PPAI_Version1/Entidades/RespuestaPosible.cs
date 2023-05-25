@@ -8,8 +8,8 @@ namespace PPAI_Version1.Entidades
 {
     public class RespuestaPosible
     {
-        public string descripcion { get; set; }
-        public string valor { get; set; }
+        private string descripcion;
+        private string valor;
 
         public RespuestaPosible(string descripcion, string valor)
             { 
@@ -17,7 +17,7 @@ namespace PPAI_Version1.Entidades
                 this.valor = valor;
             }
         public RespuestaPosible() { }
-        public void getDescripcionRta(string desc) { this.descripcion = desc; }
-        
+        public string getDescripcionRta() => descripcion;
+
     }
 }

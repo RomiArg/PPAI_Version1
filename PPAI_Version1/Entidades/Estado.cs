@@ -8,8 +8,11 @@ namespace PPAI_Version1.Entidades
 {
     public class Estado
     {
-        public string nombre{ get; set; }
+        private string nombre;
 
-        public Estado() { }
+        public Estado(string nombre)
+        {
+            this.nombre = nombre;
+        }
     }
 }

@@ -8,8 +8,13 @@ namespace PPAI_Version1.Entidades
 {
     public class CambioEstado
     {
-        public DateTime fechaHoraInicio {get; set;}
-        public Estado estado = new Estado();
-       public CambioEstado() { }  
+        private DateTime fechaHoraInicio;
+        private Estado[] estado;
+      
+        public CambioEstado(DateTime fechaHoraInicio, Estado[] estado)
+        {
+            this.fechaHoraInicio = fechaHoraInicio;
+            this.estado = estado;
+        }
     }
 }

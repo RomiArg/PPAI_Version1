@@ -8,8 +8,13 @@ namespace PPAI_Version1.Entidades
 {
     public class Pregunta
     {
-        public string pregunta { get; set; }
-        public RespuestaPosible respuesta = new RespuestaPosible();
-        public Pregunta() { }
+        private string pregunta;
+        private RespuestaPosible respuesta;
+
+        public Pregunta(string pregunta, RespuestaPosible respuesta)
+        {
+            this.pregunta = pregunta;
+            this.respuesta = respuesta;
+        }
     }
 }
