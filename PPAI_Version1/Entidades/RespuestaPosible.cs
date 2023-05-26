@@ -12,12 +12,22 @@ namespace PPAI_Version1.Entidades
         private string valor;
 
         public RespuestaPosible(string descripcion, string valor)
-            { 
-                this.descripcion = descripcion;
-                this.valor = valor;
-            }
+        {
+            this.descripcion = descripcion;
+            this.valor = valor;
+        }
         public RespuestaPosible() { }
-        public string getDescripcionRta() => descripcion;
+        public string GetDescripcionRta() => descripcion;
+
+        public string MostrarDatos()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Descripcion: ").Append(descripcion);
+            sb.AppendLine("valor").Append(valor);
+
+            return sb.ToString();
+        }
 
     }
 }

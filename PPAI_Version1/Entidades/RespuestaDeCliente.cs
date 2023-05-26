@@ -17,10 +17,19 @@ namespace PPAI_Version1.Entidades
             this.respuestaSeleccionada = respuestaSeleccionada;
         }
         
-        //public RespuestaPosible GetDescripcionRta()
-        public RespuestaPosible GetRespuestaSeleccionada() 
+        public RespuestaDeCliente() { }
+        public RespuestaPosible GetDescripcionRta()
         {
             return respuestaSeleccionada;
-        }      
+        }
+        public string MostrarDatos()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Fecha De Encuesta: ").Append(fechaDeEncuesta.ToString());
+            sb.AppendLine("Respuesta Seleccionada: ").Append(respuestaSeleccionada.MostrarDatos());
+
+            return sb.ToString();
+        }
     }
 }

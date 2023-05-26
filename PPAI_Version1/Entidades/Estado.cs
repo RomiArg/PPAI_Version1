@@ -14,5 +14,27 @@ namespace PPAI_Version1.Entidades
         {
             this.nombre = nombre;
         }
+        public Estado() { }
+        public string Nombre { get { return nombre; } set { nombre = value; } }
+
+        
+        public string MostrarDatos()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("Nombre:").Append(nombre);
+            
+            return sb.ToString();
+        }
+
+        public bool EsFinalizada()
+        {
+            return nombre.Equals("finalizada", StringComparison.OrdinalIgnoreCase);
+        }
+
+        public bool EsIniciada()
+        {
+            return nombre.Equals("iniciada", StringComparison.OrdinalIgnoreCase);
+        }
     }
 }

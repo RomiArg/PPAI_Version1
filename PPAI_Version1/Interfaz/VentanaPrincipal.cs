@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_Version1.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,25 @@ namespace PPAI_Version1
         }
 
         private void VentanaPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBuscarPeriodo_Click(object sender, EventArgs e)
+        {
+            Llamada llamada = new Llamada();
+            if (llamada.EsDePeriodo(dtpFechaInicio.Value, dtpFechaFin.Value))
+            {
+                MessageBox.Show("Es llamada de periodo");
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
