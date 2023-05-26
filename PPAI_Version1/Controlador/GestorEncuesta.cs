@@ -1,4 +1,5 @@
-﻿using System;
+using PPAI_Version1.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,8 @@ namespace PPAI_Version1.Analisis
         private Pregunta[] descripcionPreguntas;
 
         public GestorEncuesta() { }
-        public GestorEncuesta(DateTime fechaInicioPeriodo, DateTime fechaFinPeriodo, string nombreCliente, int duracionLlamada, RespuestaDeCliente[] rtasCliente, RespuestaPosible[] rtasSeleccionadas, Pregunta[] descripcionPreguntas )
-        { 
+        public GestorEncuesta(DateTime fechaInicioPeriodo, DateTime fechaFinPeriodo, string nombreCliente, int duracionLlamada, RespuestaDeCliente[] rtasCliente, RespuestaPosible[] rtasSeleccionadas, Pregunta[] descripcionPreguntas)
+        {
             this.fechaFinPeriodo = fechaFinPeriodo;
             this.fechaFinPeriodo = fechaFinPeriodo;
             this.nombreCliente = nombreCliente;
@@ -60,9 +61,5 @@ namespace PPAI_Version1.Analisis
         {
 
         }
-
-
-
-
     }
 }
