@@ -20,8 +20,10 @@ namespace PPAI_Version1.Entidades
         }
 
         public Pregunta() { }
+
         public string DescripcionPregunta { get { return pregunta; } set { pregunta = value; } }
         public RespuestaPosible[] Respuesta { get { return respuesta; } set {  respuesta = value; } }
+
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -33,13 +35,35 @@ namespace PPAI_Version1.Entidades
             return sb.ToString();
         }
 
-        public void ListarRespuestasPosibles()
-        {
-            Console.WriteLine("Respuestas Posibles: ");
+        public string ListarRespuestasPosibles()
+        {   
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Respuestas Posibles: ");
             foreach (RespuestaPosible respuestaPosible in respuesta)
             {
-                Console.WriteLine(respuestaPosible.MostrarDatos());
+                sb.AppendLine(respuestaPosible.MostrarDatos());
+                sb.AppendLine("");
             }
+        }
+
+        public bool EsRespuestaDeCliente(RespuestaDeCliente[] rtas)
+        {
+            for (int=0;i<rtas;i++)
+            {
+
+            }
+        }
+
+        public bool TieneRtaPosible(RespuestaDeCliente rta)
+        {
+            foreach (Resp in this.respuesta)
+            {
+                if rta.respuestaSeleccionada == Resp 
+                { 
+                    return true; 
+                }
+            }
+            return false;   
         }
     }
 }

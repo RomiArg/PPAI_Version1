@@ -18,10 +18,12 @@ namespace PPAI_Version1.Entidades
         }
         
         public RespuestaDeCliente() { }
+       
         public RespuestaPosible GetDescripcionRta()
         {
             return respuestaSeleccionada;
         }
+        
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
