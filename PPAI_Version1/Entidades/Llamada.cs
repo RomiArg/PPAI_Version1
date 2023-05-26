@@ -38,6 +38,7 @@ namespace PPAI_Version1.Entidades
         public Cliente AsignarCliente { get { return cliente; } set { cliente = value; } }
         public RespuestaDeCliente[] RespuestasDeEncuesta { get { return respuestasDeEncuesta; } set { respuestasDeEncuesta = value; } }
         public CambioEstado[] CambioEstado { get { return cambiosEstado; } set { cambiosEstado = value; } }
+        
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();

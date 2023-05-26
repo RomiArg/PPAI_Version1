@@ -50,5 +50,10 @@ namespace PPAI_Version1.Entidades
             return estado.Nombre; //metodo getNombre
         }
 
+        public DateTime GetFechaHoraInicio()
+        {
+            return fechaHoraInicio;
+        }
+
     }
 }

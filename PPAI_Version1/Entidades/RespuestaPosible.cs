@@ -17,6 +17,10 @@ namespace PPAI_Version1.Entidades
             this.valor = valor;
         }
         public RespuestaPosible() { }
+
+        public string Descripcion { get { return descripcion; } set { descripcion = value; } }
+        public string Valor { get { return valor; } set { valor = value; } }
+
         public string GetDescripcionRta() => descripcion;
 
         public string MostrarDatos()

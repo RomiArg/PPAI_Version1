@@ -1,4 +1,4 @@
-﻿using PPAI_Version1.Entidades;
+using PPAI_Version1.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +61,5 @@ namespace PPAI_Version1.Analisis
         {
 
         }
-
-
     }
 }
