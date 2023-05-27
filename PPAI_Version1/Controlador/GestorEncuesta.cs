@@ -67,7 +67,7 @@ namespace PPAI_Version1.Analisis
             CambioEstado ce2 = new CambioEstado(DateTime.Parse("2023-06-30 18:30:00"), e0);
             CambioEstado ce3 = new CambioEstado(DateTime.Parse("2023-05-25 10:15:00"), e1);
             CambioEstado ce4 = new CambioEstado(DateTime.Parse("2023-04-03 11:00:00"), e1);
-            CambioEstado ce5 = new CambioEstado(DateTime.Parse("2023-04-26 11:00:00"), e1);
+            CambioEstado ce5 = new CambioEstado(DateTime.Parse("2023-04-26 11:30:00"), e1);
             CambioEstado ce6 = new CambioEstado(DateTime.Parse("2023-03-22 09:45:00"), e2);
             CambioEstado ce7 = new CambioEstado(DateTime.Parse("2023-01-25 09:00:00"), e2);
             CambioEstado ce8 = new CambioEstado(DateTime.Parse("2023-06-04 11:35:00"), e2);
@@ -100,13 +100,13 @@ namespace PPAI_Version1.Analisis
             llamada1.CambiosEstado.Add(ce6);
             llamada1.CambiosEstado.Add(ce10);
 
-            //GestorEncuesta gestor = new GestorEncuesta();
-            //gestor.Llamadas.Add(llamada0);
-            //gestor.Llamadas.Add(llamada1);
-            //gestor.Llamadas.Add(llamada2);
-            //gestor.Llamadas.Add(llamada3);
-            //gestor.Llamadas.Add(llamada4);
-            //gestor.Llamadas.Add(llamada5);
+            GestorEncuesta gestor = new GestorEncuesta();
+            gestor.Llamadas.Add(llamada0);
+            gestor.Llamadas.Add(llamada1);
+            gestor.Llamadas.Add(llamada2);
+            gestor.Llamadas.Add(llamada3);
+            gestor.Llamadas.Add(llamada4);
+            gestor.Llamadas.Add(llamada5);
 
         }
         public void ConsultarEncuesta()
@@ -116,29 +116,31 @@ namespace PPAI_Version1.Analisis
 
         public bool TomarSeleccionFechasFiltros(DateTime fechaIniP,DateTime fechaFinP) 
         {
-
-            Llamada llamada = new Llamada();
             FechaInicioPeriodo = fechaIniP;
             FechaFinPeriodo = fechaFinP;
-            if(llamada.EsDePeriodo(FechaInicioPeriodo, FechaFinPeriodo))
+            foreach (Llamada llamada in llamadas)
             {
-                BuscarLlamadasConEncuestasRespondidas(llamadas);
-                return true;
+                if (llamada.EsDePeriodo(FechaInicioPeriodo, FechaFinPeriodo))
+                {
+                    BuscarLlamadasConEncuestasRespondidas(llamadas);
+                    return true;
+                }
             }
             return false;
             
         }
 
-        public void BuscarLlamadasConEncuestasRespondidas(List<Llamada> llamadas)
+        public List<Llamada> BuscarLlamadasConEncuestasRespondidas(List<Llamada> llamadas)
         {
             List<Llamada> llamadaCEncuesta = new List<Llamada>();
             foreach(Llamada llam in llamadas)
             {
                 if(llam.TieneEncuestaRespondida() & llam.EsDePeriodo(FechaInicioPeriodo,FechaFinPeriodo))
                 {
-
+                    llamadaCEncuesta.Add(llam);
                 }
             }
+            return llamadaCEncuesta;
         }
 
         public void TomarSeleccionLlamada(Llamada llamadaElegida)
