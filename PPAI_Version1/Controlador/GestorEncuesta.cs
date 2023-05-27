@@ -22,7 +22,7 @@ namespace PPAI_Version1.Analisis
         private List<Encuesta> encuesta;
         private List<Llamada> llamadas;
 
-        /* Mï¿½todos constructores de la clase */
+        /* Métodos constructores de la clase */
         public GestorEncuesta() 
         {
        
@@ -41,7 +41,7 @@ namespace PPAI_Version1.Analisis
             this.encuesta = encuesta;   
         }
 
-        /* Mï¿½todos de seteo de las propiedades */
+        /* Métodos de seteo de las propiedades */
         public DateTime FechaInicioPeriodo { get; set; }
         public DateTime FechaFinPeriodo { get; set; }
         public string NombreCliente { get; set; }
@@ -53,7 +53,7 @@ namespace PPAI_Version1.Analisis
         public int DuracionLlamada { get; set; }
         public List<Llamada> Llamadas { get; set; }
 
-        /* Mï¿½todos que son utilizados en la implementaciï¿½n del CU */
+        /* Métodos que son utilizados en la implementación del CU */
 
         public void CargarEntidades()
         {
@@ -75,7 +75,7 @@ namespace PPAI_Version1.Analisis
             CambioEstado ce10 = new CambioEstado(DateTime.Parse("2023-05-20 12:20:00"), e3);
             CambioEstado ce11 = new CambioEstado(DateTime.Parse("2023-03-25 15:15:00"), e3);
 
-            Cliente cl0 = new Cliente("Josï¿½ Perez", 459267987, 1585642548);
+            Cliente cl0 = new Cliente("José Perez", 459267987, 1585642548);
             Cliente cl1 = new Cliente("Micalea Gonzalez", 459267987, 1514187694);
             Cliente cl2 = new Cliente("Sofia Vergara", 459267987, 1597541629);
             Cliente cl3 = new Cliente("Celeste Rojas", 459267987, 1649718234);
@@ -151,7 +151,7 @@ namespace PPAI_Version1.Analisis
             return llamadaSeleccionada.GetNombreClienteYEstado();
         }
 
-        public void BuscarDatosLlamada()
+        public string BuscarRespuestas()
         {
             foreach(RespuestaDeCliente res in rtasCliente)
             {
