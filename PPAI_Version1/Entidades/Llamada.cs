@@ -8,37 +8,41 @@ namespace PPAI_Version1.Entidades
 {
     public class Llamada
     {
+        /* Atributos de la clase Llamada */
         private string descripcionOperador;
         private string detalleAccionRequerida;
         private float duracion;
         private bool encuestaEnviada;
         private string observacionAuditor;
-        private RespuestaDeCliente[] respuestasDeEncuesta;
+        private List<RespuestaDeCliente> respuestasDeEncuesta;
         private Cliente cliente;
-        private CambioEstado[] cambiosEstado;
+        private List<CambioEstado> cambiosEstado;
 
-        public Llamada() { }
-        public Llamada(string descripcionOperador, string detalleAccionRequerida, float duracion, bool encuestaEnviada, string observacionAuditor, RespuestaDeCliente[] respuestasDeEncuesta, Cliente cliente, CambioEstado[] cambiosEstado)
+        /* Métodos constructores de la clase */
+        public Llamada() 
         {
-            this.descripcionOperador = descripcionOperador;
-            this.detalleAccionRequerida = detalleAccionRequerida;
+            CambiosEstado = new List<CambioEstado>();
+        }
+        public Llamada( float duracion, bool encuestaEnviada, List<RespuestaDeCliente> respuestasDeEncuesta, Cliente cliente, List<CambioEstado> cambiosEstado)
+        {
             this.duracion = duracion;
             this.encuestaEnviada = encuestaEnviada;
-            this.observacionAuditor = observacionAuditor;
             this.respuestasDeEncuesta = respuestasDeEncuesta;
             this.cliente = cliente;
             this.cambiosEstado = cambiosEstado;
         }
 
-        public string DescripcionOperador { get { return descripcionOperador; } set { descripcionOperador = value; } }
-        public string DetalleAccionRequerida { get { return detalleAccionRequerida; } set { detalleAccionRequerida = value; } }
-        public float Duracion { get { return duracion; } set { duracion = value; } }
-        public bool EncuestaEnviada { get { return encuestaEnviada; } set { encuestaEnviada = value; } }
-        public string ObservacionAuditor { get { return observacionAuditor; } set { observacionAuditor = value; } }
-        public Cliente AsignarCliente { get { return cliente; } set { cliente = value; } }
-        public RespuestaDeCliente[] RespuestasDeEncuesta { get { return respuestasDeEncuesta; } set { respuestasDeEncuesta = value; } }
-        public CambioEstado[] CambioEstado { get { return cambiosEstado; } set { cambiosEstado = value; } }
-        
+        /* Métodos de seteo de las propiedades */
+        public string DescripcionOperador { get; set; }
+        public string DetalleAccionRequerida { get; set; }
+        public float Duracion { get; set; }
+        public bool EncuestaEnviada { get; set; }
+        public string ObservacionAuditor { get; set; }
+        public Cliente Cliente { get; set; }
+        public List<RespuestaDeCliente> RespuestasDeEncuesta { get; set; }
+        public List<CambioEstado> CambiosEstado { get; set; }
+
+        /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -47,38 +51,40 @@ namespace PPAI_Version1.Entidades
             sb.AppendLine("Datos del cliente:").AppendLine(cliente.MostrarDatos());
             sb.AppendLine("Encuesta:"); 
             sb.AppendLine("Observación del auditor:").Append(observacionAuditor);
-            sb.AppendLine("Estado:").Append(GetEstadoActual().GetNombreEstado());
+            sb.AppendLine("Estado:").Append(GetNombreClienteYEstado());
 
             return sb.ToString();
         }
 
-        public string GetNombreCliente()
-        {
-            return cliente.NombreCompleto;
-        }
+        // COMENTADO POR SI ACASO
+        //public string GetNombreCliente()
+        //{
+        //    return cliente.NombreCompleto;
+        //}
 
-        public CambioEstado GetEstadoActual()
-        {
-            CambioEstado ultimo = null;
-            for (int i = 0; i < cambiosEstado.Length; i++)
-            {
-                if(i == 0)
-                {
-                    ultimo = cambiosEstado[i];
-                }
-                if (cambiosEstado[i].FechaHoraInicio > ultimo.FechaHoraInicio)
-                {
-                    ultimo = cambiosEstado[i];
-                }
-            }
-            return ultimo;
-        }
+        //public CambioEstado GetEstadoActual()
+        //{
+        //    CambioEstado ultimo = null;
+        //    for (int i = 0; i < cambiosEstado.Count; i++)
+        //    {
+        //        if(i == 0)
+        //        {
+        //            ultimo = cambiosEstado[i];
+        //        }
+        //        if (cambiosEstado[i].FechaHoraInicio > ultimo.FechaHoraInicio)
+        //        {
+        //            ultimo = cambiosEstado[i];
+        //        }
+        //    }
+        //    return ultimo;
+        //}
 
+        /* Métodos que son utilizados en la implementación del CU */
         public void CalcularDuracion()
         {
             CambioEstado inicial = null;
             CambioEstado final = null;
-            for (int i = 0; i < cambiosEstado.Length; i++)
+            for (int i = 0; i < cambiosEstado.Count; i++)
             {
                 if (cambiosEstado[i].EsEstadoInicial())
                 {
@@ -97,28 +103,42 @@ namespace PPAI_Version1.Entidades
         public bool EsDePeriodo(DateTime fechaInicio, DateTime fechaFin)
         {
             CambioEstado inicial = null;
-            for (int i = 0; i < cambiosEstado.Length; i++)
+            for (int i = 0; i < CambiosEstado.Count; i++)
             {
-                if (cambiosEstado[i].EsEstadoInicial())
+                if (CambiosEstado[i].EsEstadoInicial())
                 {
-                    inicial = cambiosEstado[i];
+                    inicial = CambiosEstado[i];
                 }
             }
 
             if (inicial != null)
             {
-                if (inicial.FechaHoraInicio >= fechaInicio & inicial.FechaHoraInicio <= fechaFin)
+                if (inicial.FechaHoraInicio >= fechaInicio && inicial.FechaHoraInicio <= fechaFin)
                 { 
                     return true;
                 }
             }
             return false;
-
         }
 
         public bool TieneEncuestaRespondida()
         {
             return respuestasDeEncuesta != null;
+        }
+
+        public string GetNombreClienteYEstado()
+        {
+            string nombreCliente = Cliente.NombreCompleto;
+            string ultimoCambioEstado = CambioEstado.EsEstadoActual(CambiosEstado);
+
+            if (ultimoCambioEstado != null)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("Cliente:").Append(nombreCliente);
+                sb.AppendLine("Estado:").Append(ultimoCambioEstado);
+                return sb.ToString();
+            }
+            return "";
         }
     }
 }

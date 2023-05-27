@@ -8,22 +8,24 @@ namespace PPAI_Version1.Entidades
 {
     public class RespuestaDeCliente
     {
+        /* Atributos de la clase RespuestaDeCliente */
         private DateTime fechaDeEncuesta;
         private RespuestaPosible respuestaSeleccionada;
+
+        /* Métodos constructores de la clase */
+        public RespuestaDeCliente() { }
 
         public RespuestaDeCliente(DateTime fechaDeEncuesta, RespuestaPosible respuestaSeleccionada)
         {
             this.fechaDeEncuesta = fechaDeEncuesta;
             this.respuestaSeleccionada = respuestaSeleccionada;
         }
-        
-        public RespuestaDeCliente() { }
-       
-        public RespuestaPosible GetDescripcionRta()
-        {
-            return respuestaSeleccionada;
-        }
-        
+
+        /* Métodos de seteo de las propiedades */
+        public DateTime FechaDeEncuesta { get; set; } 
+        public RespuestaPosible RespuestaSeleccionada { get; set; }    
+
+        /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -32,6 +34,12 @@ namespace PPAI_Version1.Entidades
             sb.AppendLine("Respuesta Seleccionada: ").Append(respuestaSeleccionada.MostrarDatos());
 
             return sb.ToString();
+        }
+
+        /* Método que se utiliza en la implementación del CU */
+        public string GetDescripcionRta()
+        {
+            return respuestaSeleccionada.GetDescripcionRta();
         }
     }
 }

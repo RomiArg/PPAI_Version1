@@ -1,4 +1,5 @@
-﻿using PPAI_Version1.Entidades;
+﻿using PPAI_Version1.Analisis;
+using PPAI_Version1.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace PPAI_Version1
 {
     public partial class VentanaPrincipal : Form
     {
+        public GestorEncuesta gestor = new GestorEncuesta();
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -32,15 +34,19 @@ namespace PPAI_Version1
 
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnBuscarPeriodo_Click(object sender, EventArgs e)
         {
-            Llamada llamada = new Llamada();
-            if (llamada.EsDePeriodo(dtpFechaInicio.Value, dtpFechaFin.Value))
+            if (gestor.TomarSeleccionFechasFiltros(dtpFechaInicio.Value, dtpFechaFin.Value))
             {
-                MessageBox.Show("Es llamada de periodo");
+                MessageBox.Show("Esta bien");
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron Llamadas con Encuestas responidas en el periodo indicado");
+                this.Close();
             }
         }
 
@@ -49,9 +55,19 @@ namespace PPAI_Version1
 
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        private void dgwLlamadasEncuesta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Desea cancelar la ejecución?", "Confirmación", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
         }
     }
 }

@@ -8,27 +8,33 @@ namespace PPAI_Version1.Entidades
 {
     public class Encuesta
     {
+        /* Atributos de la clase Encuesta */
         private string descripcion;
         private DateTime fechaFinVigencia;
-        private Pregunta[] pregunta;
+        private List<Pregunta> pregunta;
 
+        /* Métodos constructores de la clase */
         public Encuesta() { }
-        public Encuesta(string descripcion, DateTime fechaFinVigencia, Pregunta[] pregunta)
+        public Encuesta(string descripcion, DateTime fechaFinVigencia, List<Pregunta> pregunta)
         {
             this.descripcion = descripcion;
             this.fechaFinVigencia = fechaFinVigencia;
             this.pregunta = pregunta;
         }
-        public string Descripcion { get { return descripcion; } set { descripcion = value; } }
-        public DateTime FechaFinVigencia { get { return fechaFinVigencia; } set {  fechaFinVigencia = value; } }
-        public Pregunta[] Pregunta { get { return pregunta; } set { pregunta = value; } }
+
+        /* Métodos de seteo de las propiedades */
+        public string Descripcion { get; set; }
+        public DateTime FechaFinVigencia { get; set; }
+        public List<Pregunta> Pregunta { get; set; }
+
+        /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("Descripcion: ").Append(descripcion);
             sb.AppendLine("Fecha Fin Vigencia: ").Append(fechaFinVigencia.ToString());
-            foreach(Pregunta pta in pregunta)
+            foreach (Pregunta pta in pregunta)
             {
                 sb.AppendLine(pta.MostrarDatos());
             }
@@ -36,9 +42,26 @@ namespace PPAI_Version1.Entidades
             return sb.ToString();
         }
 
-        public bool EsEncuestaDeCliente()
+        /* Métodos que son utilizados en la implementación del CU */
+        public bool EsEncuestaDeCliente(List<RespuestaDeCliente> respuestas)
         {
+            for (int i = 0; i < pregunta.Count - 1; i++)
+            {
+                if (!pregunta[i].EsEncuestaDeCliente(respuestas))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
+        public bool EsVigente(DateTime fechaVig)
+        {
+            if(fechaFinVigencia.Date <= fechaVig.Date)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

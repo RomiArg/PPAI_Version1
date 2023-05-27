@@ -8,16 +8,20 @@ namespace PPAI_Version1.Entidades
 {
     public class Estado
     {
+        /* Atributos de la clase Estado */
         private string nombre;
 
+        /* Método constructor de la clase */
         public Estado(string nombre)
         {
             this.nombre = nombre;
         }
         public Estado() { }
-        public string Nombre { get { return nombre; } set { nombre = value; } }
-
         
+        /* Método de seteo de la propiedad */
+        public string Nombre { get; set; }
+
+        /* Este método convierte al atributo en string para mostrarlo */
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -26,7 +30,8 @@ namespace PPAI_Version1.Entidades
             
             return sb.ToString();
         }
-
+         
+        /* Métodos que son utilizados en la implementación del CU */
         public bool EsFinalizada()
         {
             return nombre.Equals("finalizada", StringComparison.OrdinalIgnoreCase);

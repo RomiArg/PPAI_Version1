@@ -10,20 +10,23 @@ namespace PPAI_Version1.Entidades
 {
     public class Pregunta
     {
+        /* Atributos de la clase Pregunta */
         private string pregunta;
-        private RespuestaPosible[] respuesta;
+        private List<RespuestaPosible> respuesta;
 
-        public Pregunta(string pregunta, RespuestaPosible[] respuesta)
+        /* Métodos constructores de la clase */
+        public Pregunta() { }
+        public Pregunta(string pregunta, List<RespuestaPosible> respuesta)
         {
             this.pregunta = pregunta;
             this.respuesta = respuesta;
         }
 
-        public Pregunta() { }
+        /* Métodos de seteo de las propiedades */
+        public string DescripcionPregunta { get; set; }
+        public List<RespuestaPosible> Respuesta { get; set; }
 
-        public string DescripcionPregunta { get { return pregunta; } set { pregunta = value; } }
-        public RespuestaPosible[] Respuesta { get { return respuesta; } set {  respuesta = value; } }
-
+        /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -35,6 +38,7 @@ namespace PPAI_Version1.Entidades
             return sb.ToString();
         }
 
+        /* Métodos que son utilizados en la implementación del CU */
         public string ListarRespuestasPosibles()
         {   
             StringBuilder sb = new StringBuilder();
@@ -44,26 +48,31 @@ namespace PPAI_Version1.Entidades
                 sb.AppendLine(respuestaPosible.MostrarDatos());
                 sb.AppendLine("");
             }
+            return sb.ToString();
         }
 
-        public bool EsRespuestaDeCliente(RespuestaDeCliente[] rtas)
+        public bool EsEncuestaDeCliente(List<RespuestaDeCliente> rtas)
         {
-            for (int=0;i<rtas;i++)
+            foreach (RespuestaDeCliente rta in rtas)
             {
-
+                if (!TieneRtaPosible(rta))
+                {
+                    return false; 
+                }
             }
+            return true; 
         }
 
         public bool TieneRtaPosible(RespuestaDeCliente rta)
         {
-            foreach (Resp in this.respuesta)
+            foreach (RespuestaPosible Resp in this.respuesta)
             {
-                if rta.respuestaSeleccionada == Resp 
+                if (rta.RespuestaSeleccionada == Resp)
                 { 
-                    return true; 
+                    return true;
                 }
             }
-            return false;   
+            return false;
         }
     }
 }
