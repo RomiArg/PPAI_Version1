@@ -114,33 +114,23 @@ namespace PPAI_Version1.Analisis
             
         }
 
-        public bool TomarSeleccionFechasFiltros(DateTime fechaIniP,DateTime fechaFinP) 
+        public void TomarSeleccionFechasFiltros(DateTime fechaIniP, DateTime fechaFinP) 
         {
             FechaInicioPeriodo = fechaIniP;
             FechaFinPeriodo = fechaFinP;
-            foreach (Llamada llamada in llamadas)
-            {
-                if (llamada.EsDePeriodo(FechaInicioPeriodo, FechaFinPeriodo))
-                {
-                    BuscarLlamadasConEncuestasRespondidas(llamadas);
-                    return true;
-                }
-            }
-            return false;
-            
         }
 
-        public List<Llamada> BuscarLlamadasConEncuestasRespondidas(List<Llamada> llamadas)
+        public List<Llamada> BuscarLlamadasConEncuestaRespondida()
         {
-            List<Llamada> llamadaCEncuesta = new List<Llamada>();
-            foreach(Llamada llam in llamadas)
+            List<Llamada> llamadasFiltradas = null;
+            foreach (Llamada llamada in llamadas)
             {
-                if(llam.TieneEncuestaRespondida() & llam.EsDePeriodo(FechaInicioPeriodo,FechaFinPeriodo))
+                if (llamada.EsDePeriodo(FechaInicioPeriodo, FechaFinPeriodo) & llamada.TieneEncuestaRespondida())
                 {
-                    llamadaCEncuesta.Add(llam);
+                    llamadasFiltradas.Add(llamada);
                 }
             }
-            return llamadaCEncuesta;
+            return llamadasFiltradas;
         }
 
         public void TomarSeleccionLlamada(Llamada llamadaElegida)
@@ -172,6 +162,11 @@ namespace PPAI_Version1.Analisis
                 }
             }
             return null;
+        }
+
+        public string BuscarDescripcionEncuestaYPregunta(Encuesta encuesta)
+        {
+            return encuesta.Descripcion;
         }
     }
 }
