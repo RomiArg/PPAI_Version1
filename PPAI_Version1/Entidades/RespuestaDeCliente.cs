@@ -22,8 +22,8 @@ namespace PPAI_Version1.Entidades
         }
 
         /* Métodos de seteo de las propiedades */
-        public DateTime FechaDeEncuesta { get; set; } 
-        public RespuestaPosible RespuestaSeleccionada { get; set; }    
+        public DateTime FechaDeEncuesta { get { return fechaDeEncuesta; } set { fechaDeEncuesta = value; } } 
+        public RespuestaPosible RespuestaSeleccionada { get { return respuestaSeleccionada; } set { respuestaSeleccionada = value; } }    
 
         /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()

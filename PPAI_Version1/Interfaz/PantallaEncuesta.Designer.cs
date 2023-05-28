@@ -1,6 +1,6 @@
 ﻿namespace PPAI_Version1
 {
-    partial class VentanaPrincipal
+    partial class PantallaEncuesta
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.lblLlamadasEncuesta = new System.Windows.Forms.Label();
             this.dgwLlamadasEncuesta = new System.Windows.Forms.DataGridView();
-            this.Llamada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Encuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LlamadaNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClienteNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EncuestaBool = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBuscarPeriodo = new System.Windows.Forms.Button();
             this.lblFechaFin = new System.Windows.Forms.Label();
             this.lblFechaInicio = new System.Windows.Forms.Label();
@@ -62,6 +63,8 @@
             this.Pregunta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RespuestasCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitter2 = new System.Windows.Forms.Splitter();
+            this.Llamada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -118,7 +121,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dgwLlamadasEncuesta);
             this.splitContainer2.Size = new System.Drawing.Size(410, 229);
-            this.splitContainer2.SplitterDistance = 26;
+            this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.TabIndex = 11;
             // 
             // lblLlamadasEncuesta
@@ -135,24 +138,30 @@
             // 
             this.dgwLlamadasEncuesta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwLlamadasEncuesta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Llamada,
-            this.Encuesta});
+            this.LlamadaNro,
+            this.ClienteNombre,
+            this.EncuestaBool});
             this.dgwLlamadasEncuesta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwLlamadasEncuesta.Location = new System.Drawing.Point(0, 0);
             this.dgwLlamadasEncuesta.Name = "dgwLlamadasEncuesta";
-            this.dgwLlamadasEncuesta.Size = new System.Drawing.Size(410, 199);
+            this.dgwLlamadasEncuesta.Size = new System.Drawing.Size(410, 200);
             this.dgwLlamadasEncuesta.TabIndex = 0;
             this.dgwLlamadasEncuesta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwLlamadasEncuesta_CellContentClick);
             // 
-            // Llamada
+            // LlamadaNro
             // 
-            this.Llamada.HeaderText = "Llamadas";
-            this.Llamada.Name = "Llamada";
+            this.LlamadaNro.HeaderText = "Llamada";
+            this.LlamadaNro.Name = "LlamadaNro";
             // 
-            // Encuesta
+            // ClienteNombre
             // 
-            this.Encuesta.HeaderText = "Encuesta";
-            this.Encuesta.Name = "Encuesta";
+            this.ClienteNombre.HeaderText = "Cliente";
+            this.ClienteNombre.Name = "ClienteNombre";
+            // 
+            // EncuestaBool
+            // 
+            this.EncuestaBool.HeaderText = "Encuesta";
+            this.EncuestaBool.Name = "EncuestaBool";
             // 
             // btnBuscarPeriodo
             // 
@@ -259,14 +268,14 @@
             // dgwLlamada
             // 
             this.dgwLlamada.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.RosyBrown;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwLlamada.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.RosyBrown;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwLlamada.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgwLlamada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwLlamada.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LlamadaConEcuesta,
@@ -279,73 +288,72 @@
             this.dgwLlamada.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwLlamada.Location = new System.Drawing.Point(0, 0);
             this.dgwLlamada.Name = "dgwLlamada";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.RosyBrown;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwLlamada.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.RosyBrown;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwLlamada.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgwLlamada.Size = new System.Drawing.Size(708, 313);
             this.dgwLlamada.TabIndex = 1;
-            this.dgwLlamada.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwLlamada_CellContentClick);
             // 
             // LlamadaConEcuesta
             // 
             this.LlamadaConEcuesta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            this.LlamadaConEcuesta.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            this.LlamadaConEcuesta.DefaultCellStyle = dataGridViewCellStyle11;
             this.LlamadaConEcuesta.HeaderText = "Llamada";
             this.LlamadaConEcuesta.Name = "LlamadaConEcuesta";
             // 
             // Cliente
             // 
             this.Cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Cliente.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Cliente.DefaultCellStyle = dataGridViewCellStyle12;
             this.Cliente.HeaderText = "Cliente";
             this.Cliente.Name = "Cliente";
             // 
             // EstadoActual
             // 
             this.EstadoActual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.EstadoActual.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.EstadoActual.DefaultCellStyle = dataGridViewCellStyle13;
             this.EstadoActual.HeaderText = "Estado";
             this.EstadoActual.Name = "EstadoActual";
             // 
             // Duracion
             // 
             this.Duracion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Duracion.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Duracion.DefaultCellStyle = dataGridViewCellStyle14;
             this.Duracion.HeaderText = "Duración ";
             this.Duracion.Name = "Duracion";
             // 
             // DescripcionEncuesta
             // 
             this.DescripcionEncuesta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DescripcionEncuesta.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DescripcionEncuesta.DefaultCellStyle = dataGridViewCellStyle15;
             this.DescripcionEncuesta.HeaderText = "Descripcion de la Encuesta";
             this.DescripcionEncuesta.Name = "DescripcionEncuesta";
             // 
             // Pregunta
             // 
             this.Pregunta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Pregunta.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Pregunta.DefaultCellStyle = dataGridViewCellStyle16;
             this.Pregunta.HeaderText = "Preguntas";
             this.Pregunta.Name = "Pregunta";
             // 
             // RespuestasCliente
             // 
             this.RespuestasCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.White;
-            this.RespuestasCliente.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            this.RespuestasCliente.DefaultCellStyle = dataGridViewCellStyle17;
             this.RespuestasCliente.HeaderText = "Respuestas seleccionadas del Cliente";
             this.RespuestasCliente.Name = "RespuestasCliente";
             // 
@@ -358,14 +366,24 @@
             this.splitter2.TabIndex = 5;
             this.splitter2.TabStop = false;
             // 
-            // VentanaPrincipal
+            // Llamada
+            // 
+            this.Llamada.HeaderText = "Llamadas";
+            this.Llamada.Name = "Llamada";
+            // 
+            // Cliente1
+            // 
+            this.Cliente1.HeaderText = "Cliente";
+            this.Cliente1.Name = "Cliente1";
+            // 
+            // PantallaEncuesta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 546);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "VentanaPrincipal";
+            this.Name = "PantallaEncuesta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Encuestas";
             this.Load += new System.EventHandler(this.VentanaPrincipal_Load);
@@ -399,8 +417,7 @@
         private System.Windows.Forms.DataGridView dgwLlamadasEncuesta;
         private System.Windows.Forms.Button btnBuscarPeriodo;
         private System.Windows.Forms.DataGridView dgwLlamada;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Llamada;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Encuesta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Encuesta1;
         private System.Windows.Forms.DataGridViewTextBoxColumn LlamadaConEcuesta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoActual;
@@ -412,6 +429,12 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGenerarCSV;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Llamada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LlamadaNro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClienteNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EncuestaBool;
     }
+
 }
 

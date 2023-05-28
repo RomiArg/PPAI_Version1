@@ -23,9 +23,9 @@ namespace PPAI_Version1.Entidades
         }
 
         /* Métodos de seteo de las propiedades */
-        public string NombreCompleto { get; set; }
-        public int NumeroCelular { get; set; }
-        public int DNI { get; set; }
+        public string NombreCompleto { get { return nombreCompleto; } set { nombreCompleto = value; } }
+        public int  DNI { get { return dni; } set { dni = value; } }
+        public int NumeroCelular { get { return nroCelular; } set { nroCelular = value; } }
 
         /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()

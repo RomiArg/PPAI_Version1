@@ -14,18 +14,18 @@ namespace PPAI_Version1.Entidades
         private List<Pregunta> pregunta;
 
         /* Métodos constructores de la clase */
-        public Encuesta() { }
+        public Encuesta() { Pregunta = new List<Pregunta>(); }
         public Encuesta(string descripcion, DateTime fechaFinVigencia, List<Pregunta> pregunta)
         {
             this.descripcion = descripcion;
             this.fechaFinVigencia = fechaFinVigencia;
-            this.pregunta = pregunta;
+            this.pregunta = new List<Pregunta>();
         }
 
         /* Métodos de seteo de las propiedades */
-        public string Descripcion { get; set; }
-        public DateTime FechaFinVigencia { get; set; }
-        public List<Pregunta> Pregunta { get; set; }
+        public string Descripcion { get { return descripcion; } set { descripcion = value; } }
+        public DateTime FechaFinVigencia { get { return fechaFinVigencia; } set { fechaFinVigencia = value; } }
+        public List<Pregunta> Pregunta { get { return pregunta; } set { pregunta = value; } }
 
         /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
@@ -43,11 +43,11 @@ namespace PPAI_Version1.Entidades
         }
 
         /* Métodos que son utilizados en la implementación del CU */
-        public bool EsEncuestaDeCliente(List<RespuestaDeCliente> respuestas)
+        public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
         {
-            for (int i = 0; i < pregunta.Count - 1; i++)
+            foreach (Pregunta pregunta in pregunta)
             {
-                if (!pregunta[i].EsEncuestaDeCliente(respuestas))
+                if (!pregunta.EsEncuestaDeCliente(respuestas))
                 {
                     return false;
                 }

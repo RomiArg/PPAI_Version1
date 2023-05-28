@@ -15,16 +15,16 @@ namespace PPAI_Version1.Entidades
         private List<RespuestaPosible> respuesta;
 
         /* Métodos constructores de la clase */
-        public Pregunta() { }
-        public Pregunta(string pregunta, List<RespuestaPosible> respuesta)
+        public Pregunta() { respuesta = new List<RespuestaPosible>(); }
+        public Pregunta(string pregunta)
         {
             this.pregunta = pregunta;
-            this.respuesta = respuesta;
+            this.respuesta = new List<RespuestaPosible>();
         }
 
         /* Métodos de seteo de las propiedades */
-        public string DescripcionPregunta { get; set; }
-        public List<RespuestaPosible> Respuesta { get; set; }
+        public string DescripcionPregunta { get { return pregunta; } set { pregunta = value; } }
+        public List<RespuestaPosible> Respuesta { get { return respuesta; } set {  respuesta = value; } }
 
         /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
@@ -51,9 +51,9 @@ namespace PPAI_Version1.Entidades
             return sb.ToString();
         }
 
-        public bool EsEncuestaDeCliente(List<RespuestaDeCliente> rtas)
+        public bool EsEncuestaDeCliente(List<RespuestaPosible> rtas)
         {
-            foreach (RespuestaDeCliente rta in rtas)
+            foreach (RespuestaPosible rta in rtas)
             {
                 if (!TieneRtaPosible(rta))
                 {
@@ -63,11 +63,11 @@ namespace PPAI_Version1.Entidades
             return true; 
         }
 
-        public bool TieneRtaPosible(RespuestaDeCliente rta)
+        public bool TieneRtaPosible(RespuestaPosible rta)
         {
             foreach (RespuestaPosible Resp in this.respuesta)
             {
-                if (rta.RespuestaSeleccionada == Resp)
+                if (rta == Resp)
                 { 
                     return true;
                 }

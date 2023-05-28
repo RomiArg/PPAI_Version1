@@ -21,8 +21,8 @@ namespace PPAI_Version1.Entidades
         }
 
         /* Métodos de seteo de las propiedades */
-        public Estado Estado { get; set; }
-        public DateTime FechaHoraInicio { get; set; }
+        public Estado Estado { get { return estado; } set { estado = value; } }
+        public DateTime FechaHoraInicio { get { return fechaHoraInicio; } set{ fechaHoraInicio = value; } }
 
         /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
@@ -30,7 +30,7 @@ namespace PPAI_Version1.Entidades
             StringBuilder sb = new StringBuilder();
             
             sb.AppendLine("Estado: ").Append(estado.MostrarDatos());
-            sb.AppendLine("Fecha Hora Inicio: ").Append(fechaHoraInicio).ToString();
+            sb.AppendLine("\nFecha Hora Inicio: ").Append(fechaHoraInicio);
 
             return sb.ToString(); 
         }
@@ -52,7 +52,7 @@ namespace PPAI_Version1.Entidades
 
         public string GetNombreEstado()
         {
-            return Estado.Nombre; 
+            return estado.Nombre; 
         }
 
         public DateTime GetFechaHoraInicio()

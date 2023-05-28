@@ -22,25 +22,26 @@ namespace PPAI_Version1.Entidades
         public Llamada() 
         {
             CambiosEstado = new List<CambioEstado>();
+            RespuestasDeEncuesta = new List<RespuestaDeCliente>();
         }
-        public Llamada( float duracion, bool encuestaEnviada, List<RespuestaDeCliente> respuestasDeEncuesta, Cliente cliente, List<CambioEstado> cambiosEstado)
+        public Llamada( float duracion, bool encuestaEnviada, Cliente cliente)
         {
             this.duracion = duracion;
             this.encuestaEnviada = encuestaEnviada;
-            this.respuestasDeEncuesta = respuestasDeEncuesta;
             this.cliente = cliente;
-            this.cambiosEstado = cambiosEstado;
+            this.cambiosEstado = new List<CambioEstado>();
+            this.respuestasDeEncuesta = new List<RespuestaDeCliente>();
         }
 
         /* Métodos de seteo de las propiedades */
-        public string DescripcionOperador { get; set; }
-        public string DetalleAccionRequerida { get; set; }
-        public float Duracion { get; set; }
-        public bool EncuestaEnviada { get; set; }
-        public string ObservacionAuditor { get; set; }
-        public Cliente Cliente { get; set; }
-        public List<RespuestaDeCliente> RespuestasDeEncuesta { get; set; }
-        public List<CambioEstado> CambiosEstado { get; set; }
+        public string DescripcionOperador { get { return descripcionOperador; } set { descripcionOperador = value; } }
+        public string DetalleAccionRequerida { get { return detalleAccionRequerida; } set { detalleAccionRequerida = value; } }
+        public float Duracion { get { return duracion; } set {  duracion = value; } }
+        public bool EncuestaEnviada { get { return encuestaEnviada; } set { encuestaEnviada = value; } }
+        public string ObservacionAuditor { get { return observacionAuditor; } set {  observacionAuditor = value; } }
+        public Cliente Cliente { get { return cliente; } set {  cliente = value; } }
+        public List<RespuestaDeCliente> RespuestasDeEncuesta { get { return respuestasDeEncuesta; } set {  respuestasDeEncuesta = value; } }
+        public List<CambioEstado> CambiosEstado { get { return cambiosEstado; } set { cambiosEstado = value; } }
 
         /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
@@ -56,31 +57,7 @@ namespace PPAI_Version1.Entidades
             return sb.ToString();
         }
 
-        // COMENTADO POR SI ACASO
-        //public string GetNombreCliente()
-        //{
-        //    return cliente.NombreCompleto;
-        //}
-
-        //public CambioEstado GetEstadoActual()
-        //{
-        //    CambioEstado ultimo = null;
-        //    for (int i = 0; i < cambiosEstado.Count; i++)
-        //    {
-        //        if(i == 0)
-        //        {
-        //            ultimo = cambiosEstado[i];
-        //        }
-        //        if (cambiosEstado[i].FechaHoraInicio > ultimo.FechaHoraInicio)
-        //        {
-        //            ultimo = cambiosEstado[i];
-        //        }
-        //    }
-        //    return ultimo;
-        //}
-
-        /* Métodos que son utilizados en la implementación del CU */
-        public void CalcularDuracion()
+        public float GetDuracion()
         {
             CambioEstado inicial = null;
             CambioEstado final = null;
@@ -97,24 +74,15 @@ namespace PPAI_Version1.Entidades
             }
 
             TimeSpan diferencia = final.FechaHoraInicio - inicial.FechaHoraInicio;
-            this.duracion = diferencia.Minutes;
+            return diferencia.Minutes;
         }
 
         public bool EsDePeriodo(DateTime fechaInicio, DateTime fechaFin)
         {
-            CambioEstado inicial = null;
-            for (int i = 0; i < CambiosEstado.Count; i++)
+            foreach(CambioEstado cambio in CambiosEstado)
             {
-                if (CambiosEstado[i].EsEstadoInicial())
+                if ((cambio.EsEstadoInicial()) && (cambio.FechaHoraInicio >= fechaInicio && cambio.FechaHoraInicio <= fechaFin))
                 {
-                    inicial = CambiosEstado[i];
-                }
-            }
-
-            if (inicial != null)
-            {
-                if (inicial.FechaHoraInicio >= fechaInicio && inicial.FechaHoraInicio <= fechaFin)
-                { 
                     return true;
                 }
             }
@@ -123,7 +91,12 @@ namespace PPAI_Version1.Entidades
 
         public bool TieneEncuestaRespondida()
         {
-            return respuestasDeEncuesta != null;
+            if (RespuestasDeEncuesta != null)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public string GetNombreClienteYEstado()

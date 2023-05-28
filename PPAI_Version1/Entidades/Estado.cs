@@ -19,7 +19,7 @@ namespace PPAI_Version1.Entidades
         public Estado() { }
         
         /* Método de seteo de la propiedad */
-        public string Nombre { get; set; }
+        public string Nombre { get { return nombre; } set { nombre = value; } }
 
         /* Este método convierte al atributo en string para mostrarlo */
         public string MostrarDatos()
@@ -34,12 +34,16 @@ namespace PPAI_Version1.Entidades
         /* Métodos que son utilizados en la implementación del CU */
         public bool EsFinalizada()
         {
-            return nombre.Equals("finalizada", StringComparison.OrdinalIgnoreCase);
+            return nombre.Equals("Finalizada", StringComparison.OrdinalIgnoreCase);
         }
 
         public bool EsIniciada()
         {
-            return nombre.Equals("iniciada", StringComparison.OrdinalIgnoreCase);
+            if (nombre.Equals("Iniciada", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

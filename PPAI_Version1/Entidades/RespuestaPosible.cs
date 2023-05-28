@@ -21,8 +21,8 @@ namespace PPAI_Version1.Entidades
         public RespuestaPosible() { }
 
         /* Métodos de seteo de las propiedades */
-        public string Descripcion { get; set; }
-        public string Valor { get; set; }
+        public string Descripcion { get { return descripcion; } set {  descripcion = value; } }
+        public string Valor { get { return valor; } set {  valor = value; } }
 
         /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
