@@ -1,5 +1,6 @@
 ﻿using PPAI_Version1.Analisis;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -100,20 +101,22 @@ namespace PPAI_Version1.Entidades
             return false;
         }
 
-        public string GetNombreClienteYEstado()
+        
+        public List<string> GetNombreClienteYEstado()
         {
-            string nombreCliente = Cliente.NombreCompleto;
-            string ultimoCambioEstado = CambioEstado.EsEstadoActual(CambiosEstado);
+            string cliente = Cliente.NombreCompleto;
+            string estado = CambioEstado.EsEstadoActual(CambiosEstado);
+            List<string> lista = new List<string>();
 
-
-            if (ultimoCambioEstado != null)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine(nombreCliente);
-                sb.AppendLine(ultimoCambioEstado); 
-                return sb.ToString();
+            if (estado != null)
+            {  
+                lista.Add(cliente);
+                lista.Add (estado);
+                return lista;
             }
-             return "";
+            lista.Add(cliente);
+            lista.Add("No se encontro estado actual");
+            return lista;
         }
-    }
+    }  
 }

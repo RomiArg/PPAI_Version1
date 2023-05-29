@@ -14,27 +14,22 @@ using System.Windows.Forms;
 
 namespace PPAI_Version1
 {
-    public partial class PantallaEncuesta : Form
-    {
-
-        private GestorEncuesta gestor;
-
-        public PantallaEncuesta(GestorEncuesta gestor)
+        public partial class PantallaEncuesta : Form
         {
-            this.gestor = gestor;
-            InitializeComponent();
-        }
-        public PantallaEncuesta()
-        {
-            InitializeComponent();
-            this.gestor = new GestorEncuesta(this);
-        }
 
-        private void btnGenerar_Click(object sender, EventArgs e)
-        {
-            CSV ventana = new CSV();
-            ventana.ShowDialog();
-        }
+            private GestorEncuesta gestor;
+            private CSV csv;
+
+            public PantallaEncuesta(GestorEncuesta gestor)
+            {
+                this.gestor = gestor;
+                InitializeComponent();
+            }
+            public PantallaEncuesta()
+            {
+                InitializeComponent();
+                this.gestor = new GestorEncuesta(this);
+            }
 
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
@@ -89,10 +84,8 @@ namespace PPAI_Version1
                 if (llamadaList.Count > e.RowIndex)
                 {
                     gestor.LlamadaSeleccionada = llamadaList[e.RowIndex];
+                    gestor.NombreLlamada = "Llamada " + (e.RowIndex + 1).ToString();
                     gestor.TomarSeleccionLlamada(gestor.LlamadaSeleccionada);
-                    // MessageBox.Show(gestor.LlamadaSeleccionada.MostrarDatos());
-                    //pedirOpcionFinalizacion();
-                    pedirOpcionLlamada(gestor.LlamadaDatos);
                 }
             }
             else
@@ -101,60 +94,22 @@ namespace PPAI_Version1
             }
         }
 
-        //public void pedirOpcionFinalizacion()
-        //{
-        //    string cargaDatos = gestor.MostrarCSV();
-        //    Console.WriteLine(gestor.LlamadaDatos.ToString());
-
-        //    // Limpiar los datos existentes en el DataGridView
-        //    dgwLlamada.Rows.Clear();
-
-        //    string[] filas = cargaDatos.Split('\n');
-
-        //    foreach (string fila in filas)
-        //    {
-        //        // Dividir la fila en columnas utilizando el coma como separador
-        //        string[] columnas = fila.Split(',');
-
-        //        // Crear una nueva fila en el DataGridView y asignar los valores de las columnas
-        //        dgwLlamada.Rows.Add(columnas);
-        //    }
-        //}
-
-        //public void pedirOpcionLlamada(List<string> datos)
-        //{
-        //    dgwLlamada.Rows.Clear();
-        //    int contador = 0;
-
-        //    // Recorrer la lista de personas y agregar cada persona como una fila en el DataGridView
-        //    foreach (string llama in datos)
-        //    {
-        //        contador++;
-        //        string nombreLlamada = "Llamada" + contador.ToString();
-        //        dgwLlamada.Rows.Add(nombreLlamada, gestor.LlamadaDatos);
-        //    }
-        //}
-
-        public void pedirOpcionLlamada(List<string> datos)
+        public void pedirOpcionVisualizacion()
         {
             dgwLlamada.Rows.Clear();
-            int contador = 0;
-
-            foreach (string elemento in datos)
+            dgwPreguntas.Rows.Clear();
+            dgwLlamada.Rows.Add(gestor.NombreLlamada, gestor.NombreCliente, gestor.EstadoActual, gestor.DuracionLlamada, gestor.DescripcionEncuesta);
+            for (int i = 0; i < ((gestor.PreguntasYRespuestas.Count) / 2); i++)
             {
-                contador++;
-                string nombreLlamada = "Llamada" + contador.ToString();
-
-                // Verificar que haya suficientes datos en la lista gestor.LlamadaDatos
-                if (contador <= gestor.LlamadaDatos.Count)
-                {
-                    dgwLlamada.Rows.Add(nombreLlamada, gestor.LlamadaDatos[0], gestor.LlamadaDatos[1], gestor.LlamadaDatos[2]);
-                }
+                int a = i * 2;
+                dgwPreguntas.Rows.Add(gestor.PreguntasYRespuestas[a], gestor.PreguntasYRespuestas[a + 1]);
             }
         }
 
-            private void btnGenerarCSV_Click(object sender, EventArgs e)
+        
+        private void btnGenerarCSV_Click(object sender, EventArgs e)
         {
+            
             CSV ventana = new CSV();
             ventana.ShowDialog();
         }

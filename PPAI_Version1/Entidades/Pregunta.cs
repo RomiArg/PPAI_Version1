@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace PPAI_Version1.Entidades
 {
@@ -12,26 +13,26 @@ namespace PPAI_Version1.Entidades
     {
         /* Atributos de la clase Pregunta */
         private string pregunta;
-        private List<RespuestaPosible> respuesta;
+        private List<RespuestaPosible> respuestaPosibles;
 
         /* Métodos constructores de la clase */
-        public Pregunta() { respuesta = new List<RespuestaPosible>(); }
+        public Pregunta() { respuestaPosibles = new List<RespuestaPosible>(); }
         public Pregunta(string pregunta)
         {
             this.pregunta = pregunta;
-            this.respuesta = new List<RespuestaPosible>();
+            this.respuestaPosibles = new List<RespuestaPosible>();
         }
 
         /* Métodos de seteo de las propiedades */
         public string DescripcionPregunta { get { return pregunta; } set { pregunta = value; } }
-        public List<RespuestaPosible> Respuesta { get { return respuesta; } set {  respuesta = value; } }
+        public List<RespuestaPosible> RespuestaPosibles { get { return respuestaPosibles; } set { respuestaPosibles = value; } }
 
         /* Este método convierte a los atributos en string para mostrarlos */
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(pregunta);
-            foreach (RespuestaPosible rta in respuesta)
+            foreach (RespuestaPosible rta in respuestaPosibles)
             {
                 sb.AppendLine(rta.MostrarDatos());
             }
@@ -40,10 +41,10 @@ namespace PPAI_Version1.Entidades
 
         /* Métodos que son utilizados en la implementación del CU */
         public string ListarRespuestasPosibles()
-        {   
+        {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Respuestas Posibles: ");
-            foreach (RespuestaPosible respuestaPosible in respuesta)
+            foreach (RespuestaPosible respuestaPosible in respuestaPosibles)
             {
                 sb.AppendLine(respuestaPosible.MostrarDatos());
                 sb.AppendLine("");
@@ -51,27 +52,53 @@ namespace PPAI_Version1.Entidades
             return sb.ToString();
         }
 
-        public bool EsEncuestaDeCliente(List<RespuestaPosible> rtas)
-        {
-            foreach (RespuestaPosible rta in rtas)
-            {
-                if (!TieneRtaPosible(rta))
-                {
-                    return false; 
-                }
-            }
-            return true; 
-        }
+        //public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
+        //{
+        //    foreach (RespuestaPosible rta in respuestas)
+        //    {
+        //        if (!TieneRtaPosible(rta))
+        //        {
+        //            return false; 
+        //        }
+        //    }
+        //    return true; 
+        //}
 
-        public bool TieneRtaPosible(RespuestaPosible rta)
+        //public bool TieneRtaPosible(RespuestaPosible rta)
+        //{
+        //    foreach (RespuestaPosible Resp in this.respuesta)
+        //    {
+        //        if (rta.Descripcion == Resp.Descripcion)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
         {
-            foreach (RespuestaPosible Resp in this.respuesta)
+            foreach (RespuestaPosible respuesta in respuestas)
             {
-                if (rta == Resp)
-                { 
+                if (TieneRtaPosible(respuesta))
+                {
                     return true;
                 }
             }
+
+            return false;
+        }
+
+        public bool TieneRtaPosible(RespuestaPosible respuesta)
+        {
+            foreach (RespuestaPosible respuestaPosible in respuestaPosibles)
+            {
+                if (respuesta.Descripcion == respuestaPosible.Descripcion)
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
     }

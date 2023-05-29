@@ -15,11 +15,11 @@ namespace PPAI_Version1.Entidades
 
         /* Métodos constructores de la clase */
         public Encuesta() { Pregunta = new List<Pregunta>(); }
-        public Encuesta(string descripcion, DateTime fechaFinVigencia, List<Pregunta> pregunta)
+        public Encuesta(string descripcion, DateTime fechaFinVigencia, List<Pregunta> pregunta1)
         {
             this.descripcion = descripcion;
             this.fechaFinVigencia = fechaFinVigencia;
-            this.pregunta = new List<Pregunta>();
+            this.pregunta = pregunta1;
         }
 
         /* Métodos de seteo de las propiedades */
@@ -43,6 +43,30 @@ namespace PPAI_Version1.Entidades
         }
 
         /* Métodos que son utilizados en la implementación del CU */
+        //public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
+        //{
+        //    foreach (Pregunta pta in pregunta)
+        //    {
+        //        if (!pta.EsEncuestaDeCliente(respuestas))
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        //public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
+        //{
+        //    foreach (Pregunta pta i n pregunta)
+        //    {
+        //        if (!pta.EsEncuestaDeCliente(respuestas))
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
         public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
         {
             foreach (Pregunta pregunta in pregunta)
@@ -52,8 +76,10 @@ namespace PPAI_Version1.Entidades
                     return false;
                 }
             }
+
             return true;
         }
+
 
         public bool EsVigente(DateTime fechaVig)
         {

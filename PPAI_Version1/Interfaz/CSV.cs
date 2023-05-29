@@ -1,4 +1,5 @@
 ﻿using System;
+using PPAI_Version1.Analisis;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,20 @@ namespace PPAI_Version1
 {
     public partial class CSV : Form
     {
-        public CSV()
+       
+
+        private void CSV_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
+            //dgwLlamada.Rows.Clear();
+            //dgwPreguntas.Rows.Clear();
+            //dgwLlamada.Rows.Add(gestor.NombreLlamada, gestor.NombreCliente, gestor.EstadoActual, gestor.DuracionLlamada, gestor.DescripcionEncuesta);
+            //for (int i = 0; i < ((gestor.PreguntasYRespuestas.Count) / 2); i++)
+            //{
+            //    int a = i * 2;
+            //    dgwPreguntas.Rows.Add(gestor.PreguntasYRespuestas[a], gestor.PreguntasYRespuestas[a + 1]);
+            //}
         }
     }
 }
+
+

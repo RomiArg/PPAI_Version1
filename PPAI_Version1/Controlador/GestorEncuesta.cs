@@ -2,12 +2,12 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
+using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
     namespace PPAI_Version1.Analisis
-    {
+{
     public class GestorEncuesta
     {
 
@@ -24,6 +24,11 @@
         private List<Llamada> llamadas;
         private PantallaEncuesta pantallaEncuesta;
         private List<string> llamadaDatos;
+        private string nombreLlamada;
+        private string estadoActual;
+        private List<string> preguntasYRespuestas;
+        private string descripcionEncuesta;
+        private CSV csv;
 
 
 
@@ -39,7 +44,12 @@
             LlamadaDatos = new List<string>();
         }
 
-        public GestorEncuesta(DateTime fechaInicioPeriodo, DateTime fechaFinPeriodo, string nombreCliente, int duracionLlamada, List<RespuestaDeCliente> rtasCliente, List<RespuestaPosible> rtasSeleccionadas, List<Pregunta> descripcionPreguntas, Llamada llamadaSeleccionada, PantallaEncuesta pantallaEncuesta)
+        public GestorEncuesta(CSV csv)
+        {
+            this.csv = csv;
+        }
+
+        public GestorEncuesta(DateTime fechaInicioPeriodo, DateTime fechaFinPeriodo, string nombreCliente, int duracionLlamada, List<RespuestaDeCliente> rtasCliente, List<RespuestaPosible> rtasSeleccionadas, List<Pregunta> descripcionPreguntas, Llamada llamadaSeleccionada, PantallaEncuesta pantallaEncuesta, string nombreLlamada, string estadoActual, List<string> preguntasYRespuestas, string descripcionEncuesta)
         {
             this.fechaInicioPeriodo = fechaInicioPeriodo;
             this.fechaFinPeriodo = fechaFinPeriodo;
@@ -52,9 +62,12 @@
             this.encuesta = new List<Encuesta>();
             this.pantallaEncuesta = new PantallaEncuesta(this);
             this.llamadas = new List<Llamada>();
+            this.nombreLlamada = nombreLlamada;
+            this.estadoActual = estadoActual;
+            this.preguntasYRespuestas = preguntasYRespuestas;
+            this.descripcionEncuesta = descripcionEncuesta;
         }
-
-        public GestorEncuesta() 
+        public GestorEncuesta()
         {
             Llamadas = new List<Llamada>();
             Encuesta = new List<Encuesta>();
@@ -66,17 +79,21 @@
 
         /* Métodos de seteo de las propiedades */
         public DateTime FechaInicioPeriodo { get { return fechaInicioPeriodo; } set { fechaInicioPeriodo = value; } }
-        public DateTime FechaFinPeriodo { get { return fechaFinPeriodo; } set{ fechaFinPeriodo = value; } }
+        public DateTime FechaFinPeriodo { get { return fechaFinPeriodo; } set { fechaFinPeriodo = value; } }
         public string NombreCliente { get { return nombreCliente; } set { nombreCliente = value; } }
         public List<RespuestaDeCliente> RtasCliente { get { return rtasCliente; } set { rtasCliente = value; } }
         public List<RespuestaPosible> RtasSeleccionadas { get { return rtasSeleccionadas; } set { rtasSeleccionadas = value; } }
         public List<Pregunta> DescripcionPreguntas { get { return descripcionPreguntas; } set { descripcionPreguntas = value; } }
         public Llamada LlamadaSeleccionada { get { return llamadaSeleccionada; } set { llamadaSeleccionada = value; } }
         public List<Encuesta> Encuesta { get { return encuesta; } set { encuesta = value; } }
-        public float DuracionLlamada { get { return duracionLlamada; } set  { duracionLlamada = value ; } }
+        public float DuracionLlamada { get { return duracionLlamada; } set { duracionLlamada = value; } }
         public List<Llamada> Llamadas { get { return llamadas; } set { llamadas = value; } }
         public PantallaEncuesta PantallaEncuesta { get; set; }
-        public List<string> LlamadaDatos { get { return llamadaDatos; } set {  llamadaDatos = value; } }
+        public List<string> LlamadaDatos { get { return llamadaDatos; } set { llamadaDatos = value; } }
+        public string NombreLlamada { get { return nombreLlamada; } set { nombreLlamada = value; } }
+        public string EstadoActual { get { return estadoActual; } set { estadoActual = value; } }
+        public List<string> PreguntasYRespuestas { get { return preguntasYRespuestas; } set { preguntasYRespuestas = value; } }
+        public string DescripcionEncuesta { get { return descripcionEncuesta; } set { descripcionEncuesta = value; } }
 
         /* Métodos que son utilizados en la implementación del CU */
 
@@ -135,28 +152,28 @@
             Pregunta pregunta2 = new Pregunta { DescripcionPregunta = "¿Qué aspecto valoras más en un buen servicio de atención al cliente?" };
             Pregunta pregunta3 = new Pregunta { DescripcionPregunta = "¿Qué tan satisfecho(a) estás con el tiempo de espera para ser atendido(a) por nuestro servicio de atención al cliente?" };
             Pregunta pregunta4 = new Pregunta { DescripcionPregunta = "¿Qué tan claro(a) encuentras el lenguaje utilizado por nuestro equipo de atención al cliente al brindarte información o solucionar tus problemas ?" };
-            Pregunta pregunta5 = new Pregunta { DescripcionPregunta = "Qué tan competente te parece nuestro equipo de atención al cliente al resolver tus consultas o problemas?" };
+            Pregunta pregunta5 = new Pregunta { DescripcionPregunta = "¿Qué tan competente te parece nuestro equipo de atención al cliente al resolver tus consultas o problemas?" };
 
             /* Se agregan a las preguntas sus respuestas*/
-            pregunta1.Respuesta.Add(respuestaPosible1);
-            pregunta1.Respuesta.Add(respuestaPosible2);
-            pregunta1.Respuesta.Add(respuestaPosible3);
+            pregunta1.RespuestaPosibles.Add(respuestaPosible1);
+            pregunta1.RespuestaPosibles.Add(respuestaPosible2);
+            pregunta1.RespuestaPosibles.Add(respuestaPosible3);
 
-            pregunta2.Respuesta.Add(respuestaPosible4);
-            pregunta2.Respuesta.Add(respuestaPosible5);
-            pregunta2.Respuesta.Add(respuestaPosible6);
+            pregunta2.RespuestaPosibles.Add(respuestaPosible4);
+            pregunta2.RespuestaPosibles.Add(respuestaPosible5);
+            pregunta2.RespuestaPosibles.Add(respuestaPosible6);
 
-            pregunta3.Respuesta.Add(respuestaPosible7);
-            pregunta3.Respuesta.Add(respuestaPosible8);
-            pregunta3.Respuesta.Add(respuestaPosible9);
+            pregunta3.RespuestaPosibles.Add(respuestaPosible7);
+            pregunta3.RespuestaPosibles.Add(respuestaPosible8);
+            pregunta3.RespuestaPosibles.Add(respuestaPosible9);
 
-            pregunta4.Respuesta.Add(respuestaPosible10);
-            pregunta4.Respuesta.Add(respuestaPosible11);
-            pregunta4.Respuesta.Add(respuestaPosible12);
+            pregunta4.RespuestaPosibles.Add(respuestaPosible10);
+            pregunta4.RespuestaPosibles.Add(respuestaPosible11);
+            pregunta4.RespuestaPosibles.Add(respuestaPosible12);
 
-            pregunta5.Respuesta.Add(respuestaPosible13);
-            pregunta5.Respuesta.Add(respuestaPosible14);
-            pregunta5.Respuesta.Add(respuestaPosible15);
+            pregunta5.RespuestaPosibles.Add(respuestaPosible13);
+            pregunta5.RespuestaPosibles.Add(respuestaPosible14);
+            pregunta5.RespuestaPosibles.Add(respuestaPosible15);
 
             /* Creación de los objetos Encuesta */
             Encuesta encuesta1 = new Encuesta { Descripcion = "Encuesta 1", FechaFinVigencia = DateTime.Parse("2023-04-26 11:30:00") };
@@ -281,26 +298,21 @@
         }
 
 
-        public string MostrarCSV()
+        public List<string> BuscarDescripcionEncuestaYPreguntas(Encuesta enc)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("CSV:");
-            sb.AppendLine(BuscarDatosLlamada());
-            sb.AppendLine("Duracion de llamada:").Append(DuracionLlamada.ToString());
-            BuscarRespuestas();
-            Encuesta enc = BuscarPreguntasDeEncuesta(RtasSeleccionadas);
+            List<string> encuestaArmada = new List<string>();
             foreach (Pregunta preg in enc.Pregunta)
             {
                 foreach (RespuestaPosible res in rtasSeleccionadas)
                 {
-                    if (preg.Respuesta.Contains(res))
+                    if (preg.RespuestaPosibles.Contains(res))
                     {
-                        sb.AppendLine(preg.DescripcionPregunta).Append(res.Descripcion);
+                        encuestaArmada.Add(preg.DescripcionPregunta);
+                        encuestaArmada.Add(res.Descripcion);
                     }
                 }
             }
-
-            return sb.ToString();
+            return encuestaArmada;
         }
 
         public void TomarSeleccionFechasFiltros(DateTime fechaIniP, DateTime fechaFinP)
@@ -329,46 +341,43 @@
         {
             LlamadaSeleccionada = llamadaElegida;
             BuscarDatosLlamada();
-            DuracionLlamada = LlamadaSeleccionada.GetDuracion();
-            string cadena = BuscarDatosLlamada();
-            string[] elementos = cadena.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            LlamadaDatos.Add(elementos[0]);
-            LlamadaDatos.Add(elementos[1]);
-            LlamadaDatos.Add(DuracionLlamada.ToString());
-           
-            RtasCliente = LlamadaSeleccionada.RespuestasDeEncuesta;
+            BuscarRespuestas();
+            Encuesta Enc = BuscarPreguntasDeEncuesta(RtasSeleccionadas);
+            DescripcionEncuesta = Enc.Descripcion;
+            PreguntasYRespuestas = BuscarDescripcionEncuestaYPreguntas(Enc);
+            PantallaEncuesta.pedirOpcionVisualizacion();
         }
 
-        public string BuscarDatosLlamada()
+        public void BuscarDatosLlamada()
         {
-            return llamadaSeleccionada.GetNombreClienteYEstado();
+            List<string> NombreYEstado = llamadaSeleccionada.GetNombreClienteYEstado();
+            NombreCliente = NombreYEstado[0];
+            EstadoActual = NombreYEstado[1];
+            DuracionLlamada = llamadaSeleccionada.GetDuracion();
         }
 
         public void BuscarRespuestas()
         {
-           
+            RtasCliente = LlamadaSeleccionada.RespuestasDeEncuesta;
+            RtasSeleccionadas = new List<RespuestaPosible>();
+
             foreach (RespuestaDeCliente res in RtasCliente)
             {
-                 RtasSeleccionadas.Append(res.RespuestaSeleccionada);
-            }   
+                RtasSeleccionadas.Add(res.RespuestaSeleccionada);
+            }
         }
 
         public Encuesta BuscarPreguntasDeEncuesta(List<RespuestaPosible> respuestas)
         {
-            foreach (Encuesta encu in this.encuesta)
+            foreach (Encuesta encuesta in encuesta)
             {
-                if (encu.EsEncuestaDeCliente(respuestas))
+                if (encuesta.EsEncuestaDeCliente(respuestas))
                 {
-                    return encu;
+                    return encuesta;
                 }
             }
-            return null;
-        }
 
-        public string BuscarDescripcionEncuestaYPregunta(Encuesta encuesta)
-        {
-            PantallaEncuesta.pedirOpcionLlamada(LlamadaDatos);
-            return encuesta.Descripcion;
+            return null;
         }
     }
 }
