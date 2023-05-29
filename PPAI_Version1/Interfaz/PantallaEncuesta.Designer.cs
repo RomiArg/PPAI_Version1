@@ -50,6 +50,8 @@
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dgwPreguntas = new System.Windows.Forms.DataGridView();
+            this.Preguntas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnGenerarCSV = new System.Windows.Forms.Button();
@@ -62,8 +64,6 @@
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.Llamada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preguntas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -240,6 +240,18 @@
             this.dgwPreguntas.Size = new System.Drawing.Size(673, 210);
             this.dgwPreguntas.TabIndex = 7;
             // 
+            // Preguntas
+            // 
+            this.Preguntas.HeaderText = "Preguntas";
+            this.Preguntas.Name = "Preguntas";
+            this.Preguntas.Width = 350;
+            // 
+            // Respuesta
+            // 
+            this.Respuesta.HeaderText = "Respuesta Seleccionada";
+            this.Respuesta.Name = "Respuesta";
+            this.Respuesta.Width = 280;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -262,7 +274,7 @@
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(80, 30);
             this.btnImprimir.TabIndex = 2;
-            this.btnImprimir.Text = "Implimir";
+            this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
@@ -369,18 +381,6 @@
             // 
             this.Cliente1.HeaderText = "Cliente";
             this.Cliente1.Name = "Cliente1";
-            // 
-            // Preguntas
-            // 
-            this.Preguntas.HeaderText = "Preguntas";
-            this.Preguntas.Name = "Preguntas";
-            this.Preguntas.Width = 350;
-            // 
-            // Respuesta
-            // 
-            this.Respuesta.HeaderText = "Respuesta Seleccionada";
-            this.Respuesta.Name = "Respuesta";
-            this.Respuesta.Width = 280;
             // 
             // PantallaEncuesta
             // 

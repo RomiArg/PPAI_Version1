@@ -109,8 +109,7 @@ namespace PPAI_Version1
         
         private void btnGenerarCSV_Click(object sender, EventArgs e)
         {
-            
-            CSV ventana = new CSV();
+            CSV ventana = new CSV(gestor);
             ventana.ShowDialog();
         }
     }

@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgwLlamada = new System.Windows.Forms.DataGridView();
-            this.dgwPreguntas = new System.Windows.Forms.DataGridView();
             this.Llamada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DuracionLlamada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescripcionEncuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preguntas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RespuestaSeleccionada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgwPreguntas = new System.Windows.Forms.DataGridView();
+            this.Pregunta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -69,14 +69,14 @@
             // 
             // dgwLlamada
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwLlamada.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwLlamada.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgwLlamada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwLlamada.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Llamada,
@@ -84,39 +84,27 @@
             this.EstadoActual,
             this.DuracionLlamada,
             this.DescripcionEncuesta});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwLlamada.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwLlamada.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgwLlamada.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwLlamada.Location = new System.Drawing.Point(0, 0);
             this.dgwLlamada.Name = "dgwLlamada";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwLlamada.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwLlamada.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgwLlamada.Size = new System.Drawing.Size(794, 115);
             this.dgwLlamada.TabIndex = 1;
-            // 
-            // dgwPreguntas
-            // 
-            this.dgwPreguntas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPreguntas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Preguntas,
-            this.RespuestaSeleccionada});
-            this.dgwPreguntas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgwPreguntas.Location = new System.Drawing.Point(0, 0);
-            this.dgwPreguntas.Name = "dgwPreguntas";
-            this.dgwPreguntas.Size = new System.Drawing.Size(794, 322);
-            this.dgwPreguntas.TabIndex = 0;
             // 
             // Llamada
             // 
@@ -143,17 +131,29 @@
             this.DescripcionEncuesta.HeaderText = "Descripcion Encuesta";
             this.DescripcionEncuesta.Name = "DescripcionEncuesta";
             // 
-            // Preguntas
+            // dgwPreguntas
             // 
-            this.Preguntas.HeaderText = "Preguntas";
-            this.Preguntas.Name = "Preguntas";
-            this.Preguntas.Width = 380;
+            this.dgwPreguntas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwPreguntas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Pregunta,
+            this.Respuesta});
+            this.dgwPreguntas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgwPreguntas.Location = new System.Drawing.Point(0, 0);
+            this.dgwPreguntas.Name = "dgwPreguntas";
+            this.dgwPreguntas.Size = new System.Drawing.Size(794, 322);
+            this.dgwPreguntas.TabIndex = 0;
             // 
-            // RespuestaSeleccionada
+            // Pregunta
             // 
-            this.RespuestaSeleccionada.HeaderText = "Respuesta Seleccionada";
-            this.RespuestaSeleccionada.Name = "RespuestaSeleccionada";
-            this.RespuestaSeleccionada.Width = 260;
+            this.Pregunta.HeaderText = "Pregunta";
+            this.Pregunta.Name = "Pregunta";
+            this.Pregunta.Width = 380;
+            // 
+            // Respuesta
+            // 
+            this.Respuesta.HeaderText = "Respuesta";
+            this.Respuesta.Name = "Respuesta";
+            this.Respuesta.Width = 300;
             // 
             // CSV
             // 
@@ -185,7 +185,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoActual;
         private System.Windows.Forms.DataGridViewTextBoxColumn DuracionLlamada;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescripcionEncuesta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Preguntas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RespuestaSeleccionada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pregunta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Respuesta;
     }
 }
