@@ -23,6 +23,7 @@
         private List<Encuesta> encuesta;
         private List<Llamada> llamadas;
         private PantallaEncuesta pantallaEncuesta;
+        private List<string> llamadaDatos;
 
 
 
@@ -35,6 +36,7 @@
             RtasCliente = new List<RespuestaDeCliente>();
             RtasSeleccionadas = new List<RespuestaPosible>();
             DescripcionPreguntas = new List<Pregunta>();
+            LlamadaDatos = new List<string>();
         }
 
         public GestorEncuesta(DateTime fechaInicioPeriodo, DateTime fechaFinPeriodo, string nombreCliente, int duracionLlamada, List<RespuestaDeCliente> rtasCliente, List<RespuestaPosible> rtasSeleccionadas, List<Pregunta> descripcionPreguntas, Llamada llamadaSeleccionada, PantallaEncuesta pantallaEncuesta)
@@ -52,6 +54,16 @@
             this.llamadas = new List<Llamada>();
         }
 
+        public GestorEncuesta() 
+        {
+            Llamadas = new List<Llamada>();
+            Encuesta = new List<Encuesta>();
+            RtasCliente = new List<RespuestaDeCliente>();
+            RtasSeleccionadas = new List<RespuestaPosible>();
+            DescripcionPreguntas = new List<Pregunta>();
+            LlamadaDatos = new List<string>();
+        }
+
         /* Métodos de seteo de las propiedades */
         public DateTime FechaInicioPeriodo { get { return fechaInicioPeriodo; } set { fechaInicioPeriodo = value; } }
         public DateTime FechaFinPeriodo { get { return fechaFinPeriodo; } set{ fechaFinPeriodo = value; } }
@@ -64,13 +76,13 @@
         public float DuracionLlamada { get { return duracionLlamada; } set  { duracionLlamada = value ; } }
         public List<Llamada> Llamadas { get { return llamadas; } set { llamadas = value; } }
         public PantallaEncuesta PantallaEncuesta { get; set; }
+        public List<string> LlamadaDatos { get { return llamadaDatos; } set {  llamadaDatos = value; } }
 
         /* Métodos que son utilizados en la implementación del CU */
 
         public void ConsultarEncuesta()
         {
-            // pedirFechasFiltroPeriodo();
-
+            PantallaEncuesta.pedirFechasFiltroPeriodo();
 
             /* Creacion de los objetos Estado */
             Estado e0 = new Estado("Iniciada");
@@ -318,6 +330,12 @@
             LlamadaSeleccionada = llamadaElegida;
             BuscarDatosLlamada();
             DuracionLlamada = LlamadaSeleccionada.GetDuracion();
+            string cadena = BuscarDatosLlamada();
+            string[] elementos = cadena.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            LlamadaDatos.Add(elementos[0]);
+            LlamadaDatos.Add(elementos[1]);
+            LlamadaDatos.Add(DuracionLlamada.ToString());
+           
             RtasCliente = LlamadaSeleccionada.RespuestasDeEncuesta;
         }
 
@@ -349,7 +367,7 @@
 
         public string BuscarDescripcionEncuestaYPregunta(Encuesta encuesta)
         {
-            PantallaEncuesta.pedirOpcionFinalizacion();
+            PantallaEncuesta.pedirOpcionLlamada(LlamadaDatos);
             return encuesta.Descripcion;
         }
     }

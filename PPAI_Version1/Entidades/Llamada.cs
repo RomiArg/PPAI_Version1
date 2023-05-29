@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_Version1.Analisis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -104,14 +105,15 @@ namespace PPAI_Version1.Entidades
             string nombreCliente = Cliente.NombreCompleto;
             string ultimoCambioEstado = CambioEstado.EsEstadoActual(CambiosEstado);
 
+
             if (ultimoCambioEstado != null)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("\nCliente:").Append(nombreCliente);
-                sb.AppendLine("\nEstado:").Append(ultimoCambioEstado);
+                sb.AppendLine(nombreCliente);
+                sb.AppendLine(ultimoCambioEstado); 
                 return sb.ToString();
             }
-            return "";
+             return "";
         }
     }
 }
