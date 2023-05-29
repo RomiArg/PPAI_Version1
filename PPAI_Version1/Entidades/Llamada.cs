@@ -107,8 +107,8 @@ namespace PPAI_Version1.Entidades
             if (ultimoCambioEstado != null)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("Cliente:").Append(nombreCliente);
-                sb.AppendLine("Estado:").Append(ultimoCambioEstado);
+                sb.AppendLine("\nCliente:").Append(nombreCliente);
+                sb.AppendLine("\nEstado:").Append(ultimoCambioEstado);
                 return sb.ToString();
             }
             return "";

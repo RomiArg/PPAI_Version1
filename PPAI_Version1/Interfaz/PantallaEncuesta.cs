@@ -92,7 +92,8 @@ namespace PPAI_Version1
                 {
                     gestor.LlamadaSeleccionada = llamadaList[e.RowIndex];
                     gestor.TomarSeleccionLlamada(gestor.LlamadaSeleccionada);
-                    MessageBox.Show(gestor.LlamadaSeleccionada.MostrarDatos());
+                    // MessageBox.Show(gestor.LlamadaSeleccionada.MostrarDatos());
+                    7pedirOpcionFinalizacion();
                 }
             }
             else
@@ -103,17 +104,25 @@ namespace PPAI_Version1
 
         public void pedirOpcionFinalizacion()
         {
-            gestor.MostrarCSV();
+            string cargaDatos = gestor.MostrarCSV();
+            // Limpiar los datos existentes en el DataGridView
             dgwLlamada.Rows.Clear();
-            int contador = 0;
 
-            // Recorrer la lista de personas y agregar cada persona como una fila en el DataGridView
-            foreach (Llamada llama in gestor.Llamadas)
+            // Dividir el string en filas utilizando el carácter de salto de línea
+            // Dividir el string en filas utilizando el carácter de salto de línea
+            string[] filas = cargaDatos.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string fila in filas)
             {
-                contador++;
-                string nombreLlamada = "Llamada" + contador.ToString();
-                dgwLlamadasEncuesta.Rows.Add(nombreLlamada, llama.Cliente.NombreCompleto, llama.EncuestaEnviada);
+                // Crear una nueva fila en el DataGridView
+                dgwLlamada.Rows.Add(fila);
             }
+        }
+
+        private void btnGenerarCSV_Click(object sender, EventArgs e)
+        {
+            CSV ventana = new CSV();
+            ventana.ShowDialog();
         }
     }
 }

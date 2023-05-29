@@ -32,6 +32,9 @@
             this.PantallaEncuesta = pantallaEncuesta;
             Llamadas = new List<Llamada>();
             Encuesta = new List<Encuesta>();
+            RtasCliente = new List<RespuestaDeCliente>();
+            RtasSeleccionadas = new List<RespuestaPosible>();
+            DescripcionPreguntas = new List<Pregunta>();
         }
 
         public GestorEncuesta(DateTime fechaInicioPeriodo, DateTime fechaFinPeriodo, string nombreCliente, int duracionLlamada, List<RespuestaDeCliente> rtasCliente, List<RespuestaPosible> rtasSeleccionadas, List<Pregunta> descripcionPreguntas, Llamada llamadaSeleccionada, PantallaEncuesta pantallaEncuesta)
@@ -271,7 +274,7 @@
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("CSV:");
             sb.AppendLine(BuscarDatosLlamada());
-            sb.AppendLine("Duracion de llamada:").AppendLine(duracionLlamada.ToString());
+            sb.AppendLine("Duracion de llamada:").Append(DuracionLlamada.ToString());
             BuscarRespuestas();
             Encuesta enc = BuscarPreguntasDeEncuesta(RtasSeleccionadas);
             foreach (Pregunta preg in enc.Pregunta)
@@ -280,7 +283,7 @@
                 {
                     if (preg.Respuesta.Contains(res))
                     {
-                        sb.AppendLine(preg.DescripcionPregunta).AppendLine(res.Descripcion);
+                        sb.AppendLine(preg.DescripcionPregunta).Append(res.Descripcion);
                     }
                 }
             }
@@ -326,9 +329,9 @@
         public void BuscarRespuestas()
         {
            
-            foreach (RespuestaDeCliente res in rtasCliente)
+            foreach (RespuestaDeCliente res in RtasCliente)
             {
-                 rtasSeleccionadas.Append(res.RespuestaSeleccionada);
+                 RtasSeleccionadas.Append(res.RespuestaSeleccionada);
             }   
         }
 
@@ -346,6 +349,7 @@
 
         public string BuscarDescripcionEncuestaYPregunta(Encuesta encuesta)
         {
+            PantallaEncuesta.pedirOpcionFinalizacion();
             return encuesta.Descripcion;
         }
     }
