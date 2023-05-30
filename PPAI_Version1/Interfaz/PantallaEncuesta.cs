@@ -18,8 +18,6 @@ namespace PPAI_Version1
         {
 
             private GestorEncuesta gestor;
-            private CSV csv;
-
             public PantallaEncuesta(GestorEncuesta gestor)
             {
                 this.gestor = gestor;
@@ -36,7 +34,10 @@ namespace PPAI_Version1
             this.gestor.ConsultarEncuesta();
         }
 
-        public void pedirFechasFiltroPeriodo() { MessageBox.Show("Por favor colocar las fechas de inicio y fin del periodo a buscar"); }
+        public void pedirFechasFiltroPeriodo() 
+        { 
+            MessageBox.Show("Por favor colocar las fechas de inicio y fin del periodo a buscar"); 
+        }
 
         private void btnBuscarPeriodo_Click(object sender, EventArgs e)
         {
@@ -70,7 +71,7 @@ namespace PPAI_Version1
             foreach (Llamada llama in llamadas)
             {  
                 contador++;
-                string nombreLlamada = "Llamada" + contador.ToString();
+                string nombreLlamada = "Llamada " + contador.ToString();
                 dgwLlamadasEncuesta.Rows.Add(nombreLlamada, llama.Cliente.NombreCompleto, llama.EncuestaEnviada);
             }
         }
@@ -78,7 +79,7 @@ namespace PPAI_Version1
         private void dgwLlamadasEncuesta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             List<Llamada> llamadaList = gestor.BuscarLlamadasConEncuestaRespondida();
-
+           
             if (e.RowIndex >= 0 && e.RowIndex < dgwLlamadasEncuesta.Rows.Count)
             { 
                 if (llamadaList.Count > e.RowIndex)
@@ -105,12 +106,12 @@ namespace PPAI_Version1
                 dgwPreguntas.Rows.Add(gestor.PreguntasYRespuestas[a], gestor.PreguntasYRespuestas[a + 1]);
             }
         }
-
-        
+       
         private void btnGenerarCSV_Click(object sender, EventArgs e)
         {
             CSV ventana = new CSV(gestor);
             ventana.ShowDialog();
+            Close();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace PPAI_Version1
         {
             dgwLlamada.Rows.Clear();
             dgwPreguntas.Rows.Clear();
-            dgwLlamada.Rows.Add(gestor.NombreLlamada, gestor.NombreCliente, gestor.EstadoActual, gestor.DuracionLlamada, gestor.DescripcionEncuesta);
+            dgwLlamada.Rows.Add(gestor.NombreLlamada, gestor.NombreCliente, gestor.EstadoActual, gestor.DuracionLlamada);
             for (int i = 0; i < ((gestor.PreguntasYRespuestas.Count) / 2); i++)
             {
                int a = i * 2;

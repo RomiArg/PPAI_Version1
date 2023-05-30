@@ -52,30 +52,6 @@ namespace PPAI_Version1.Entidades
             return sb.ToString();
         }
 
-        //public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
-        //{
-        //    foreach (RespuestaPosible rta in respuestas)
-        //    {
-        //        if (!TieneRtaPosible(rta))
-        //        {
-        //            return false; 
-        //        }
-        //    }
-        //    return true; 
-        //}
-
-        //public bool TieneRtaPosible(RespuestaPosible rta)
-        //{
-        //    foreach (RespuestaPosible Resp in this.respuesta)
-        //    {
-        //        if (rta.Descripcion == Resp.Descripcion)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
         public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
         {
             foreach (RespuestaPosible respuesta in respuestas)
@@ -85,7 +61,6 @@ namespace PPAI_Version1.Entidades
                     return true;
                 }
             }
-
             return false;
         }
 
@@ -98,7 +73,6 @@ namespace PPAI_Version1.Entidades
                     return true;
                 }
             }
-
             return false;
         }
     }

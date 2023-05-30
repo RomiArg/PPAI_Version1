@@ -23,14 +23,10 @@ using System.Text;
         private List<Encuesta> encuesta;
         private List<Llamada> llamadas;
         private PantallaEncuesta pantallaEncuesta;
-        private List<string> llamadaDatos;
         private string nombreLlamada;
         private string estadoActual;
         private List<string> preguntasYRespuestas;
         private string descripcionEncuesta;
-        private CSV csv;
-
-
 
         /* Métodos constructores de la clase */
         public GestorEncuesta(PantallaEncuesta pantallaEncuesta)
@@ -41,12 +37,6 @@ using System.Text;
             RtasCliente = new List<RespuestaDeCliente>();
             RtasSeleccionadas = new List<RespuestaPosible>();
             DescripcionPreguntas = new List<Pregunta>();
-            LlamadaDatos = new List<string>();
-        }
-
-        public GestorEncuesta(CSV csv)
-        {
-            this.csv = csv;
         }
 
         public GestorEncuesta(DateTime fechaInicioPeriodo, DateTime fechaFinPeriodo, string nombreCliente, int duracionLlamada, List<RespuestaDeCliente> rtasCliente, List<RespuestaPosible> rtasSeleccionadas, List<Pregunta> descripcionPreguntas, Llamada llamadaSeleccionada, PantallaEncuesta pantallaEncuesta, string nombreLlamada, string estadoActual, List<string> preguntasYRespuestas, string descripcionEncuesta)
@@ -74,7 +64,6 @@ using System.Text;
             RtasCliente = new List<RespuestaDeCliente>();
             RtasSeleccionadas = new List<RespuestaPosible>();
             DescripcionPreguntas = new List<Pregunta>();
-            LlamadaDatos = new List<string>();
         }
 
         /* Métodos de seteo de las propiedades */
@@ -89,7 +78,6 @@ using System.Text;
         public float DuracionLlamada { get { return duracionLlamada; } set { duracionLlamada = value; } }
         public List<Llamada> Llamadas { get { return llamadas; } set { llamadas = value; } }
         public PantallaEncuesta PantallaEncuesta { get; set; }
-        public List<string> LlamadaDatos { get { return llamadaDatos; } set { llamadaDatos = value; } }
         public string NombreLlamada { get { return nombreLlamada; } set { nombreLlamada = value; } }
         public string EstadoActual { get { return estadoActual; } set { estadoActual = value; } }
         public List<string> PreguntasYRespuestas { get { return preguntasYRespuestas; } set { preguntasYRespuestas = value; } }
@@ -110,20 +98,21 @@ using System.Text;
             /* Creación de los objetos CambioEstado */
             CambioEstado ce0 = new CambioEstado(DateTime.Parse("2023-02-02 05:00:00"), e0);
             CambioEstado ce1 = new CambioEstado(DateTime.Parse("2023-01-17 12:45:00"), e0);
-            CambioEstado ce2 = new CambioEstado(DateTime.Parse("2023-06-30 18:30:00"), e0);
+            CambioEstado ce2 = new CambioEstado(DateTime.Parse("2023-04-26 18:35:00"), e0);
             CambioEstado ce3 = new CambioEstado(DateTime.Parse("2023-05-25 10:15:00"), e1);
             CambioEstado ce4 = new CambioEstado(DateTime.Parse("2023-04-03 11:00:00"), e1);
-            CambioEstado ce5 = new CambioEstado(DateTime.Parse("2023-04-26 11:30:00"), e1);
+            CambioEstado ce5 = new CambioEstado(DateTime.Parse("2023-06-30 11:55:00"), e1);
             CambioEstado ce6 = new CambioEstado(DateTime.Parse("2023-03-22 09:45:00"), e2);
             CambioEstado ce7 = new CambioEstado(DateTime.Parse("2023-01-25 09:00:00"), e2);
             CambioEstado ce8 = new CambioEstado(DateTime.Parse("2023-06-04 11:35:00"), e2);
-            CambioEstado ce9 = new CambioEstado(DateTime.Parse("2023-05-19 13:55:00"), e3);
+            CambioEstado ce9 = new CambioEstado(DateTime.Parse("2023-05-19 13:30:00"), e3);
             CambioEstado ce10 = new CambioEstado(DateTime.Parse("2023-05-20 12:20:00"), e3);
             CambioEstado ce11 = new CambioEstado(DateTime.Parse("2023-03-25 15:15:00"), e3);
+           
 
             /* Creación de los objetos Cliente */
             Cliente cl0 = new Cliente("José Perez", 459267987, 1585642548);
-            Cliente cl1 = new Cliente("Micalea Gonzalez", 459267987, 1514187694);
+            Cliente cl1 = new Cliente("Micaela Gonzalez", 459267987, 1514187694);
             Cliente cl2 = new Cliente("Sofia Vergara", 459267987, 1597541629);
             Cliente cl3 = new Cliente("Celeste Rojas", 459267987, 1649718234);
             Cliente cl4 = new Cliente("Diego Martinez", 459267987, 1952118874);
@@ -151,7 +140,7 @@ using System.Text;
             Pregunta pregunta1 = new Pregunta { DescripcionPregunta = "¿Cuál es tu canal de comunicación preferido para contactar con nuestro servicio de atención al cliente?" };
             Pregunta pregunta2 = new Pregunta { DescripcionPregunta = "¿Qué aspecto valoras más en un buen servicio de atención al cliente?" };
             Pregunta pregunta3 = new Pregunta { DescripcionPregunta = "¿Qué tan satisfecho(a) estás con el tiempo de espera para ser atendido(a) por nuestro servicio de atención al cliente?" };
-            Pregunta pregunta4 = new Pregunta { DescripcionPregunta = "¿Qué tan claro(a) encuentras el lenguaje utilizado por nuestro equipo de atención al cliente al brindarte información o solucionar tus problemas ?" };
+            Pregunta pregunta4 = new Pregunta { DescripcionPregunta = "¿Qué tan claro(a) encuentras el lenguaje utilizado por nuestro equipo de atención al cliente al brindarte información o solucionar tus problemas?" };
             Pregunta pregunta5 = new Pregunta { DescripcionPregunta = "¿Qué tan competente te parece nuestro equipo de atención al cliente al resolver tus consultas o problemas?" };
 
             /* Se agregan a las preguntas sus respuestas*/
@@ -283,7 +272,6 @@ using System.Text;
             llamada5.RespuestasDeEncuesta.Add(respuesta18);
 
             /* Se agregan al gestor todas las llamadas */
-            //GestorEncuesta gestor = new GestorEncuesta ();
             this.Llamadas.Add(llamada0);
             this.Llamadas.Add(llamada1);
             this.Llamadas.Add(llamada2);
@@ -296,32 +284,20 @@ using System.Text;
             this.Encuesta.Add(encuesta2);
             this.Encuesta.Add(encuesta3);
         }
-
-
-        public List<string> BuscarDescripcionEncuestaYPreguntas(Encuesta enc)
-        {
-            List<string> encuestaArmada = new List<string>();
-            foreach (Pregunta preg in enc.Pregunta)
-            {
-                foreach (RespuestaPosible res in rtasSeleccionadas)
-                {
-                    if (preg.RespuestaPosibles.Contains(res))
-                    {
-                        encuestaArmada.Add(preg.DescripcionPregunta);
-                        encuestaArmada.Add(res.Descripcion);
-                    }
-                }
-            }
-            return encuestaArmada;
-        }
-
         public void TomarSeleccionFechasFiltros(DateTime fechaIniP, DateTime fechaFinP)
         {
             FechaInicioPeriodo = fechaIniP;
             FechaFinPeriodo = fechaFinP;
 
             List<Llamada> llamadasRespondidas = BuscarLlamadasConEncuestaRespondida();
-            PantallaEncuesta.pedirSeleccionLlamada(llamadasRespondidas);
+            if (llamadasRespondidas.Count == 0)
+            {
+                MessageBox.Show("No existen llamadas con encuesta respondidas en el período indicado. \nPor favor ingresar un periodo nuevo.");
+            }
+            else
+            {
+                PantallaEncuesta.pedirSeleccionLlamada(llamadasRespondidas);
+            }
         }
 
         public List<Llamada> BuscarLlamadasConEncuestaRespondida()
@@ -376,8 +352,24 @@ using System.Text;
                     return encuesta;
                 }
             }
-
             return null;
+        }
+
+        public List<string> BuscarDescripcionEncuestaYPreguntas(Encuesta enc)
+        {
+            List<string> encuestaArmada = new List<string>();
+            foreach (Pregunta preg in enc.Pregunta)
+            {
+                foreach (RespuestaPosible res in rtasSeleccionadas)
+                {
+                    if (preg.RespuestaPosibles.Contains(res))
+                    {
+                        encuestaArmada.Add(preg.DescripcionPregunta);
+                        encuestaArmada.Add(res.Descripcion);
+                    }
+                }
+            }
+            return encuestaArmada;
         }
     }
 }

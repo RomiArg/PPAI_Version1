@@ -39,7 +39,5 @@ namespace PPAI_Version1.Entidades
             return sb.ToString();
 
         }
-
-
     }
 }

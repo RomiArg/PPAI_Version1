@@ -83,7 +83,7 @@ namespace PPAI_Version1.Entidades
         {
             foreach(CambioEstado cambio in CambiosEstado)
             {
-                if ((cambio.EsEstadoInicial()) && (cambio.FechaHoraInicio >= fechaInicio && cambio.FechaHoraInicio <= fechaFin))
+                if (cambio.EsEstadoInicial() && (cambio.FechaHoraInicio >= fechaInicio && cambio.FechaHoraInicio <= fechaFin))
                 {
                     return true;
                 }
@@ -97,10 +97,8 @@ namespace PPAI_Version1.Entidades
             {
                 return true;
             }
-
             return false;
         }
-
         
         public List<string> GetNombreClienteYEstado()
         {

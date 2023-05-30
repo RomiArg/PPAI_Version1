@@ -38,34 +38,10 @@ namespace PPAI_Version1.Entidades
             {
                 sb.AppendLine(pta.MostrarDatos());
             }
-
             return sb.ToString();
         }
 
         /* Métodos que son utilizados en la implementación del CU */
-        //public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
-        //{
-        //    foreach (Pregunta pta in pregunta)
-        //    {
-        //        if (!pta.EsEncuestaDeCliente(respuestas))
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    return true;
-        //}
-
-        //public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
-        //{
-        //    foreach (Pregunta pta i n pregunta)
-        //    {
-        //        if (!pta.EsEncuestaDeCliente(respuestas))
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    return true;
-        //}
 
         public bool EsEncuestaDeCliente(List<RespuestaPosible> respuestas)
         {
@@ -76,7 +52,6 @@ namespace PPAI_Version1.Entidades
                     return false;
                 }
             }
-
             return true;
         }
 
