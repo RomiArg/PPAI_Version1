@@ -59,7 +59,7 @@ namespace PPAI_Version1.Entidades
             return sb.ToString();
         }
 
-        public float GetDuracion()
+        public float CalcularDuracion()
         {
             CambioEstado inicial = null;
             CambioEstado final = null;

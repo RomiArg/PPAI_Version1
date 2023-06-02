@@ -208,12 +208,14 @@ using System.Text;
             RespuestaDeCliente respuesta18 = new RespuestaDeCliente { RespuestaSeleccionada = respuestaPosible14, FechaDeEncuesta = DateTime.Parse("2023-04-26 11:30:00") };
 
             /* Creación de los objetos Llamada */
-            Llamada llamada0 = new Llamada { Cliente = cl0, EncuestaEnviada = true };
-            Llamada llamada1 = new Llamada { Cliente = cl1, EncuestaEnviada = true };
-            Llamada llamada2 = new Llamada { Cliente = cl2, EncuestaEnviada = true };
-            Llamada llamada3 = new Llamada { Cliente = cl3, EncuestaEnviada = true };
-            Llamada llamada4 = new Llamada { Cliente = cl4, EncuestaEnviada = true };
-            Llamada llamada5 = new Llamada { Cliente = cl5, EncuestaEnviada = true };
+
+            Llamada llamada0 = new Llamada { Cliente = cl0, EncuestaEnviada = true, Duracion = 15 };
+            Llamada llamada1 = new Llamada { Cliente = cl1, EncuestaEnviada = true, Duracion = 12 };
+            Llamada llamada2 = new Llamada { Cliente = cl2, EncuestaEnviada = true, Duracion = 15 };
+            Llamada llamada3 = new Llamada { Cliente = cl3, EncuestaEnviada = true, Duracion = 20 };
+            Llamada llamada4 = new Llamada { Cliente = cl4, EncuestaEnviada = true, Duracion = 10 };
+            Llamada llamada5 = new Llamada { Cliente = cl5, EncuestaEnviada = true, Duracion = 25 };
+
 
             /* Se agregan a las llamadas sus cambios de estado*/
             llamada0.CambiosEstado.Add(ce0);
@@ -284,6 +286,8 @@ using System.Text;
             this.Encuesta.Add(encuesta2);
             this.Encuesta.Add(encuesta3);
         }
+        /*Este método guarda las fechas que entran por parámetros como variables del gestor y a su vez llama al método 
+         BuscarLlamadasConEncuestaRespondida y guarda el resultado de este en una variable local. */
         public void TomarSeleccionFechasFiltros(DateTime fechaIniP, DateTime fechaFinP)
         {
             FechaInicioPeriodo = fechaIniP;
@@ -292,7 +296,7 @@ using System.Text;
             List<Llamada> llamadasRespondidas = BuscarLlamadasConEncuestaRespondida();
             if (llamadasRespondidas.Count == 0)
             {
-                MessageBox.Show("No existen llamadas con encuesta respondidas en el período indicado. \nPor favor ingresar un periodo nuevo.");
+                MessageBox.Show("No existen llamadas con encuestas respondidas en el período indicado. \nPor favor ingresar una nueva fecha de inicio y fin de periodo.");
             }
             else
             {
@@ -300,6 +304,7 @@ using System.Text;
             }
         }
 
+        /* Este método filtra las llamadas por su periodo y si tiene encuesta respondida y devuelve la Lista de llamadas. */
         public List<Llamada> BuscarLlamadasConEncuestaRespondida()
         {
             List<Llamada> llamadasFiltradas = new List<Llamada>();
@@ -313,6 +318,8 @@ using System.Text;
             return llamadasFiltradas;
         }
 
+        /*Setea la variable LlamadaElegida del gestor y realiza la búsqueda de los datos de la Llamada y la Encuesta  
+         y manda un mensaje a la Pantalla para que muestre los datos en la tabla*/
         public void TomarSeleccionLlamada(Llamada llamadaElegida)
         {
             LlamadaSeleccionada = llamadaElegida;
@@ -324,14 +331,16 @@ using System.Text;
             PantallaEncuesta.pedirOpcionVisualizacion();
         }
 
+        /*Obtiene los datos de la Llamada guardada en el gestor y llama los métodos en la clase Llamada que necesita */
         public void BuscarDatosLlamada()
         {
             List<string> NombreYEstado = llamadaSeleccionada.GetNombreClienteYEstado();
             NombreCliente = NombreYEstado[0];
             EstadoActual = NombreYEstado[1];
-            DuracionLlamada = llamadaSeleccionada.GetDuracion();
+            DuracionLlamada = llamadaSeleccionada.Duracion;
         }
 
+        /* Busca las respuestas posibles a través de las respuestas del Cliente de la Llamada y las guarda en la variable del Gestor*/
         public void BuscarRespuestas()
         {
             RtasCliente = LlamadaSeleccionada.RespuestasDeEncuesta;
@@ -343,6 +352,7 @@ using System.Text;
             }
         }
 
+        /* Busca de la clase Encuesta las preguntas que la componen y compara con las respuesta guardadas anteriormente si son iguales y si lo son devuelve la encuesta */
         public Encuesta BuscarPreguntasDeEncuesta(List<RespuestaPosible> respuestas)
         {
             foreach (Encuesta encuesta in encuesta)
@@ -355,6 +365,7 @@ using System.Text;
             return null;
         }
 
+        /* Busca en la Encuesta las preguntas y las respustas guardadas y las ordena en una lista de strings comparandolas */
         public List<string> BuscarDescripcionEncuestaYPreguntas(Encuesta enc)
         {
             List<string> encuestaArmada = new List<string>();

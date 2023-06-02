@@ -48,7 +48,7 @@ namespace PPAI_Version1
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se comenzará la impresión de la encuesta de la llmada seleccionada");
+            MessageBox.Show("Se comenzará la impresión de la encuesta de la llamada seleccionada");
             this.Close();
         }
 
@@ -67,7 +67,6 @@ namespace PPAI_Version1
             dgwLlamadasEncuesta.Rows.Clear();
             int contador = 0;
 
-            // Recorrer la lista de personas y agregar cada persona como una fila en el DataGridView
             foreach (Llamada llama in llamadas)
             {  
                 contador++;
